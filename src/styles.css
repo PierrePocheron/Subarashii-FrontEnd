@@ -1,2 +1,242 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+
+/*
+----------------------------------
+[Sommaire]
+1. Global
+2. Texte
+3. Formulaire
+4. Couleurs
+5. Boutons
+6. Scroll Bar
+7. Hover Effet
+----------------------------------
+*/
+
+/*
+----------------------------------
+1. Global
+----------------------------------
+*/
+
+:root {
+    --main-color: #FF473F;
+    --main-grey: #F3F3F3;
+    --main-white: #fff;
+}
+
+body {
+    font-family: "Inconsolata", sans-serif;
+}
+
+section {
+    display: flex;
+    align-items: center;
+}
+
+/*
+----------------------------------
+2. Texte
+----------------------------------
+*/
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 28px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 80px;
+    font-weight: bold;
+}
+
+h2::after {
+    background-color: var(--main-color);
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    bottom: -50%;
+    position: absolute;
+    transform: translate(-50%, 0);
+    width: 80px;
+    border-radius: 10px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+.f-size20 {
+    font-size: 20px;
+}
+
+.f-size14 {
+    font-size: 14px;
+}
+
+/*
+----------------------------------
+3. Formulaire
+----------------------------------
+*/
+
+label {
+    padding-left: 10px;
+}
+
+.form-control,
+textarea {
+    border-radius: 20px !important;
+    margin-bottom: 20px !important;
+    border: 1px solid rgba(255, 73, 63, 0.5) !important;
+    box-shadow: 0px 1px 10px -2px rgba(255,71,63,0.25) !important;
+    background: none !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    transition: 0.5s;
+}
+
+.form-control:focus, .form-control:hover {
+    box-shadow: none !important;
+}
+
+.form-select {
+    border-radius: 50rem;
+    color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+/*
+----------------------------------
+4. Couleurs
+----------------------------------
+*/
+
+.color-main {
+    color: var(--main-color);
+}
+
+.bg-main {
+    background-color: var(--main-color);
+}
+
+.bg-maingrey {
+    background-color: var(--main-grey);
+}
+
+.border-main-color {
+    border: 1px solid var(--main-color);
+}
+
+/*
+----------------------------------
+5. Boutons
+----------------------------------
+*/
+
+.btn-main {
+    background-color: var(--main-color);
+    color: var(--main-white);
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.btn-main:hover {
+    color: var(--main-color);
+    border-color: var(--main-color);
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.btn-reverse {
+    color: var(--main-color);
+    border-color: var(--main-color);
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.btn-reverse:hover {
+    background-color: var(--main-color);
+    color: var(--main-white);
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.btn-custom {
+    background: none;
+    border: none;
+}
+
+.link {
+    color: var(--main-color);
+    text-decoration: underline !important;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btn-radius-style {
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: var(--main-white);
+}
+
+.btn-radius-style:hover {
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+/*
+----------------------------------
+6. Scroll Bar
+----------------------------------
+*/
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--main-color);
+    border-color: var(--main-color);
+}
+
+/*
+----------------------------------
+7. Hover Effet
+----------------------------------
+*/
+
+.hover-zoom,
+.hover-card {
+    transition: 0.3s;
+}
+
+.hover-card:hover {
+    transform: scale(1.04);
+}
+
+.hover-zoom:hover {
+    transform: scale(1.2);
+}
