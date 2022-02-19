@@ -1,0 +1,46 @@
+/* Header */
+
+.navbar {
+  position: fixed;
+  background-color: var(--main-white);
+  padding: 20px 40px;
+  width: 100%;
+  z-index: 99;
+}
+
+.item-nav {
+  color: black;
+  text-decoration: none;
+  margin-left: 30px;
+  transition: 0.3s;
+}
+
+.item-nav:hover {
+  color: var(--main-color);
+}
+
+.search-input img {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  width: 18px;
+  height: 18px;
+}
+
+.search-input input {
+  padding-left: 30px;
+  margin-bottom: 0 !important;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 992px) {
+  .item-nav {
+    margin-left: 0;
+  }
+}
+
+a {
+  pointer-events: pointer;
+  text-decoration: none;
+}

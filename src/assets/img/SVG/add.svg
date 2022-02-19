@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="add" data-name="add" transform="translate(-789 -599)">
+    <g transform="translate(13 -43)">
+      <g transform="translate(776 642)" fill="none" stroke="#ff473f" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <text transform="translate(782.5 656.5)" fill="#ff473f" font-size="14" font-family="Inconsolata" font-weight="700"><tspan x="0" y="0">+</tspan></text>
+    </g>
+  </g>
+</svg>
