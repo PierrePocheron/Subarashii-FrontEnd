@@ -1,0 +1,6 @@
+<ul infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="200" (scrolled)="onScroll()">
+  <li *ngFor="let anime of animes">
+    {{anime.title}}
+    <img src="{{anime.images.jpg.image_url}}" alt="">
+  </li>
+</ul>
