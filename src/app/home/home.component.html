@@ -52,13 +52,13 @@
           (scrolled)="onScroll()">
           <div class="col-lg-3 col-md-4 col-6" *ngFor="let anime of animes">
             <div class="px-xl-2 pb-xl-5 pt-xl-0 px-lg-0 pt-5">
-              <img class="img-fluid" src="{{anime.images.jpg.image_url}}">
+              <img class="img-fluid" src="{{anime.image}}">
               <div class="d-flex justify-content-between mt-1 ">
-                <p class="mb-0">{{anime.title}}</p>
+                <p class="mb-0">{{anime.nom}}</p>
                 <button class="border-0 bg-transparent p-0"><img class="img-fluid"
                     src="../../assets/img/SVG/add.svg"></button>
               </div>
-              <small>{{anime.aired.prop.from.year ? anime.aired.prop.from.year : anime.aired.string}}</small>
+              <small>EXISTE PAS DANS LAPI SUPER</small>
             </div>
           </div>
         </div>

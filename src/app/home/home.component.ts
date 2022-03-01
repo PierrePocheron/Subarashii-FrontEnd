@@ -1,6 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { ApiAnimeService } from '../services/api-anime.service';
+import { AnimeService } from '../services/anime.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +21,7 @@ export class HomeComponent implements OnInit {
   public toutPublic = true;
   public adult = false;
 
-  constructor(private apiA: ApiAnimeService) {}
+  constructor(private apiA: AnimeService) {}
 
   async ngOnInit(): Promise<any> {
     this.order = {
@@ -34,8 +33,9 @@ export class HomeComponent implements OnInit {
 
   async getAllAnime(data: object = {}) {
     if (this.pagination.has_next_page) {
-      const dataObject: any = await this.apiA.get('anime', data);
-      this.animes = this.animes.concat(dataObject.data);
+      const dataObject: any = await this.apiA.get('discover', data);
+      this.animes = this.animes.concat(dataObject.body);
+      console.log(dataObject.body)
       this.pagination = dataObject.pagination;
       ++this.page;
     }

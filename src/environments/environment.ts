@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiAnimeUrl: 'https://api.jikan.moe/v4/',
+  apiAnimeUrl: 'http://localhost:8080/animes/',
+  backUrl: 'http://localhost:8080/'
 };
 
 /*
