@@ -13,16 +13,12 @@ export class AuthService {
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
   async login(data: any) : Promise<boolean> {
-    const request = this.http.post(environment.backUrl + 'users/sign-in', data, {observe: "response"});
+    const request = this.http.post(environment.backUrl + 'users/sign-in', data);
     try {
-      const dataRequest = await firstValueFrom(request);
-      const dataE = await dataRequest
-      let header: HttpHeaders = await dataE.headers;
-      console.log(header.get('Authorization'))
-      localStorage.setItem('token' , 'null')
+      const dataRequest: any = await firstValueFrom(request);
+      localStorage.setItem('token', dataRequest.body.token);
       return true;
     } catch (error) {
-      console.log(error);
       return false
     }
   }
