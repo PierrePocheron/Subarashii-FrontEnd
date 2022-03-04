@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimeService } from '../services/anime.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -7,21 +8,19 @@ import { AnimeService } from '../services/anime.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  public dataObject: any = {};
-  public animes: any = [];
-  public pagination: any = {
-    has_next_page: true,
-  };
   private page = 1;
   private search: any = {};
-  public orderBy = 'title';
-  public sort = 'ASC';
   private order: any = {};
   private sfw: any = false;
+  private totalPage = 1;
+  public dataObject: any = {};
+  public animes: any = [];
   public toutPublic = true;
   public adult = false;
+  public orderBy = 'title';
+  public sort = 'ASC';
 
-  constructor(private apiA: AnimeService) {}
+  constructor(private apiA: AnimeService, private datePipe: DatePipe) {}
 
   async ngOnInit(): Promise<any> {
     this.order = {
@@ -32,13 +31,14 @@ export class HomeComponent implements OnInit {
   }
 
   async getAllAnime(data: object = {}) {
-    if (this.pagination.has_next_page) {
-      const dataObject: any = await this.apiA.get('discover', data);
-      this.animes = this.animes.concat(dataObject.body);
+    if(this.totalPage >= this.page) {
+      const dataObject: any = await this.apiA.get('discover/' + this.page, data);
+      this.animes = this.animes.concat(dataObject.body.results);
       console.log(dataObject.body)
-      this.pagination = dataObject.pagination;
+      this.totalPage = dataObject.body.total_pages;
       ++this.page;
     }
+      
   }
 
   async mergeObject() {
@@ -101,5 +101,9 @@ export class HomeComponent implements OnInit {
       }
     }
     await this.getAllAnime(await this.mergeObject());
+  }
+
+  changeDate(date: Date): any {
+    return this.datePipe.transform(date, 'dd/MM/yyyy');
   }
 }

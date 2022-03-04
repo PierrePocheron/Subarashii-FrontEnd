@@ -23,6 +23,16 @@ export class AuthService {
     }
   }
 
+  async register(data: any) : Promise<boolean> {
+    const request = this.http.post(environment.backUrl + 'users/sign-up', data);
+    try {
+      await firstValueFrom(request);
+      return true;
+    } catch (error) {
+      return false
+    }
+  }
+
   public isAuthenticated(): boolean {
     const token = this.jwtHelper.tokenGetter();
     console.log(this.jwtHelper.getTokenExpirationDate(token))
