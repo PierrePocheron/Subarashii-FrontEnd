@@ -1,45 +1,68 @@
-<section class="test-section">
+<div class="position-absolute top-0 start-50 translate-middle-x">
+    <img class="img-fluid" src="../../../assets/img/logo-text-bgwhite.png">
+</div>
+
+<section class="bg-img d-flex align-items-center">
     <div class="container mt-5">
-        <div class="row mt-5">
-            <form (ngSubmit)="register()" [formGroup]="registerForm">
-                <div class="form-group">
-                    <label for="email">Adresse email</label>
-                    <input type="email" formControlName="email" class="form-control" id="email"
-                        aria-describedby="emailHelp" required>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 bg-white p-5 mt-5">
+                <div>
+                    <a class="d-flex flex-column align-items-center">
+                        <img src="../../../assets/img/SVG/profile.svg" width="50" height="50">
+                    </a>
+                    <h1 class="text-center text-uppercase color-main font-architects-daughter mt-2">Bienvenue !</h1>
                 </div>
-                <div class="form-group">
-                    <label for="username">username</label>
-                    <input type="username" formControlName="username" class="form-control" id="username"
-                        aria-describedby="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Mot de passe</label>
-                    <input type="password" formControlName="password" class="form-control" id="password" required>
-                </div>
-                <div *ngIf="submitted && f['password'].errors">
-                    <div *ngIf="f['password'].errors?.['required']">Le mot de passe est obligatoire</div>
-                    <div *ngIf="f['password'].errors?.['minlength']">Le mot doit faire plus de
-                        {{f['password'].errors?.['minlength'].requiredLength}} lettres</div>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirmer mot de passe</label>
-                    <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
-                        required>
-                    <div *ngIf="submitted && f['confirmPassword'].errors">
-                        <div *ngIf="f['confirmPassword'].errors?.['required']">Le mot de passe est obligatoire</div>
-                        <div *ngIf="f['confirmPassword'].errors?.['confirmedValidator']">Les mots de passes doivent être
-                            les mêmes</div>
+                <form class="mx-sm-5 mt-sm-5 px-sm-4" (ngSubmit)="register()" [formGroup]="registerForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" formControlName="email" class="form-control" id="email"
+                            aria-describedby="emailHelp" required>
+
+                        <div *ngIf="submitted && f['email'].errors">
+                            <small *ngIf="f['email'].errors?.['required']">Email requis</small>
+                            <small *ngIf="f['email'].errors?.['email']">Email non valide</small>
+                        </div>
                     </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-6">
-                        <button class="btn btn-main w-100" type="submit">Inscription</button>
+                    <div class="form-group">
+                        <label for="username">Nom d'utilisateur</label>
+                        <input type="username" formControlName="username" class="form-control" id="username"
+                            aria-describedby="username" required>
+
+                        <div *ngIf="submitted && f['username'].errors">
+                            <small *ngIf="f['username'].errors?.['required']">Nom d'utilisateur requis</small>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <a class="btn btn-reverse w-100" routerLink="/login">Connexion</a>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" formControlName="password" class="form-control" id="password" required>
+
+                        <div *ngIf="submitted && f['password'].errors">
+                            <small *ngIf="f['password'].errors?.['required']">Le mot de passe est obligatoire</small>
+                            <small *ngIf="f['password'].errors?.['minlength']">Le mot doit faire plus de
+                                {{f['password'].errors?.['minlength'].requiredLength}} lettres</small>
+                        </div>
                     </div>
-                </div>
-            </form>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmer mot de passe</label>
+                        <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
+                            required>
+
+                        <div *ngIf="submitted && f['confirmPassword'].errors">
+                            <small *ngIf="f['confirmPassword'].errors?.['required']">Le mot de passe est obligatoire</small>
+                            <small *ngIf="f['confirmPassword'].errors?.['confirmedValidator']">Les mots de passes doivent être
+                                les mêmes</small>
+                        </div>
+                    </div>
+                    <div class="text-center mt-sm-5">
+                        <button type="submit" class="btn btn-main">S'inscrire</button>
+                        <div class="mt-2">
+                            <a routerLink="/login">J'ai déjà un compte</a>
+                        </div>
+                    </div>
+                </form>
+                
+            </div> 
         </div>
     </div>
 </section>

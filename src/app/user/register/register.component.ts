@@ -47,8 +47,8 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(3)]],
-        confirmPassword: ['', [Validators.required, Validators.minLength(3)]],
+        password: ['', [Validators.required, Validators.minLength(5)]],
+        confirmPassword: ['', [Validators.required, Validators.minLength(5)]],
         username: ['', [Validators.required]],
       },
       {
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
       
       return;
   }
-    const result = await this.authS.register(this.registerForm.get);
+    const result = await this.authS.register(this.registerForm.getRawValue());
     if (result) this.router.navigate(['/']);
     this.message = 'Identifiant ou mot de passe incorrect';
   }
