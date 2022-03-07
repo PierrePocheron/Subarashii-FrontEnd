@@ -17,4 +17,10 @@ export class AnimeService {
     const data = await firstValueFrom(get$);
     return data;
   }
+
+  async getGenres(id: number = -1) {
+    const get$ = this.http.get(environment.backUrl + 'genres/all');
+    const data = await firstValueFrom(get$);
+    return data;
+  }
 }
