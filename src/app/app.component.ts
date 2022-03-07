@@ -8,4 +8,10 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   title = 'subarashii';
+  public showTemplate: boolean = true;
+  private urls = ['/login', '/register'];
+
+  ngOnInit() {
+    this.showTemplate = !this.urls.includes(location.pathname);
+  }
 }
