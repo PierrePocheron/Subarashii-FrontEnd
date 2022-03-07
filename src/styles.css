@@ -81,7 +81,6 @@ h3 {
 
 a {
     color: var(--main-color);
-    font-size: 14px;
     text-decoration: none;
     transition: 0.2s;
 }
@@ -159,6 +158,18 @@ textarea {
 
 .border-main-color {
     border: 1px solid var(--main-color);
+}
+
+.icon-white {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+}
+
+.icon-main {
+    filter: invert(51%) sepia(62%) saturate(5708%) hue-rotate(337deg) brightness(103%) contrast(101%);
+}
+
+.icon-black {
+    filter: invert(0%) sepia(0%) saturate(7471%) hue-rotate(260deg) brightness(92%) contrast(108%);
 }
 
 /*

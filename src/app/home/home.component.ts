@@ -123,6 +123,7 @@ export class HomeComponent implements OnInit {
     const data = await this.listS.addAnimeList(idAnime);
     if (data) {
       event.target.src = '../../assets/img/SVG/added.svg';
+      event.target.className = 'img-fluid';
     }
   }
 }
