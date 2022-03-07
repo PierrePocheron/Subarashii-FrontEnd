@@ -1,4 +1,9 @@
 <section class="list-anime">
+  <div>
+    <span *ngFor="let genre of genres">
+      {{genre.nom}}
+    </span>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-xl-3" *ngIf="!isSearch">

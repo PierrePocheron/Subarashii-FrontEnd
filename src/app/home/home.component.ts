@@ -18,9 +18,11 @@ export class HomeComponent implements OnInit {
   public animes: any = [];
   public toutPublic: boolean = true;
   public adult: boolean = false;
-  public orderBy = '';
-  private url = 'fullsearch';
+  public orderBy: string = '';
+  private url: string = 'fullsearch';
   public isSearch: boolean = false;
+  public genres: any = {};
+
   constructor(
     private apiA: AnimeService,
     private datePipe: DatePipe,
@@ -35,6 +37,9 @@ export class HomeComponent implements OnInit {
       this.url = 'search';
       return await this.getAllAnime({ query: search });
     }
+    const dataObjet: any = await this.apiA.getGenres();
+    this.genres = dataObjet.body;
+    console.log(this.genres);
     await this.getAllAnime(this.mergeObject());
   }
 
@@ -42,6 +47,7 @@ export class HomeComponent implements OnInit {
     if (this.totalPage >= this.page) {
       const dataObject: any = await this.apiA.get(this.url, data);
       this.animes = this.animes.concat(dataObject.body.results);
+      console.log(this.animes);
       this.totalPage = dataObject.body.total_pages;
       ++this.page;
     }
