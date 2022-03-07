@@ -49,6 +49,8 @@
 
             <div *ngIf="submitted && f['confirmPassword'].errors">
               <small *ngIf="f['confirmPassword'].errors?.['required']">Le mot de passe est obligatoire</small>
+              <small *ngIf="f['confirmPassword'].errors?.['minlength']">Le mot doit faire plus de
+                {{f['confirmPassword'].errors?.['minlength'].requiredLength}} lettres</small>
               <small *ngIf="f['confirmPassword'].errors?.['confirmedValidator']">Les mots de passes doivent être
                 les mêmes</small>
             </div>
