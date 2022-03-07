@@ -1,3 +1,4 @@
+import { AuthGuard } from './services/auth.guard';
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -11,7 +12,9 @@ export class AppComponent {
   public showTemplate: boolean = true;
   private urls = ['/login', '/register'];
 
-  ngOnInit() {
+  constructor(private authG: AuthGuard) {
     this.showTemplate = !this.urls.includes(location.pathname);
   }
+
+  ngOnInit() {}
 }
