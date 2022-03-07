@@ -1,4 +1,9 @@
 <section class="list-anime">
+  <div>
+    <span *ngFor="let genre of genres">
+      {{genre.nom}}
+    </span>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-xl-3" *ngIf="!isSearch">
@@ -23,24 +28,33 @@
           <div class="mt-4">
             <p class="fw-bold">Status</p>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="enCours"
-                (click)="changeStatus($event, 'airing')">
+              <input class="form-check-input" type="checkbox" value="" id="enCours" (click)="changeStatus($event, 0)">
               <label class="form-check-label" for="enCours">
                 En cours
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="enPause"
-                (click)="changeStatus($event, 'upcoming')">
+              <input class="form-check-input" type="checkbox" value="" id="enPause" (click)="changeStatus($event, 2)">
               <label class="form-check-label" for="enPause">
                 En Pause
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="termine"
-                (click)="changeStatus($event, 'complete')">
+              <input class="form-check-input" type="checkbox" value="" id="termine" (click)="changeStatus($event, 3)">
               <label class="form-check-label" for="termine">
                 Terminé
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="termine" (click)="changeStatus($event, 4)">
+              <label class="form-check-label" for="termine">
+                Annulé
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="termine" (click)="changeStatus($event, 5)">
+              <label class="form-check-label" for="termine">
+                Pilot
               </label>
             </div>
           </div>
@@ -57,7 +71,7 @@
               <p class="mb-0 mt-1 fw-bold">{{anime.original_name}}</p>
               <div class="d-flex justify-content-between">
                 <small>{{changeDate(anime.first_air_date)}}</small>
-                <button class="border-0 bg-transparent p-0"><img class="img-fluid icon-main"
+                <button class="border-0 bg-transparent p-0" (click)="addAnimeList($event, anime.id)"><img class="img-fluid icon-main"
                   src="../../assets/img/SVG/add.svg" height="20" width="20"></button>
               </div>
             </div>
