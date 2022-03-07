@@ -1,45 +1,44 @@
 <section class="test-section">
-    <div class="container mt-5">
-        <div class="row mt-5">
-            <form (ngSubmit)="register()" [formGroup]="registerForm">
-                <div class="form-group">
-                    <label for="email">Adresse email</label>
-                    <input type="email" formControlName="email" class="form-control" id="email"
-                        aria-describedby="emailHelp" required>
-                </div>
-                <div class="form-group">
-                    <label for="username">username</label>
-                    <input type="username" formControlName="username" class="form-control" id="username"
-                        aria-describedby="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Mot de passe</label>
-                    <input type="password" formControlName="password" class="form-control" id="password" required>
-                </div>
-                <div *ngIf="submitted && f['password'].errors">
-                    <div *ngIf="f['password'].errors?.['required']">Le mot de passe est obligatoire</div>
-                    <div *ngIf="f['password'].errors?.['minlength']">Le mot doit faire plus de
-                        {{f['password'].errors?.['minlength'].requiredLength}} lettres</div>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirmer mot de passe</label>
-                    <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
-                        required>
-                    <div *ngIf="submitted && f['confirmPassword'].errors">
-                        <div *ngIf="f['confirmPassword'].errors?.['required']">Le mot de passe est obligatoire</div>
-                        <div *ngIf="f['confirmPassword'].errors?.['confirmedValidator']">Les mots de passes doivent être
-                            les mêmes</div>
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-6">
-                        <button class="btn btn-main w-100" type="submit">Inscription</button>
-                    </div>
-                    <div class="col-6">
-                        <a class="btn btn-reverse w-100" routerLink="/login">Connexion</a>
-                    </div>
-                </div>
-            </form>
+  <div class="container mt-5">
+    <div class="row mt-5">
+      <form (ngSubmit)="register()" [formGroup]="registerForm">
+        <div class="form-group">
+          <label for="email">Adresse email</label>
+          <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp"
+            required>
         </div>
+        <div class="form-group">
+          <label for="username">username</label>
+          <input type="username" formControlName="username" class="form-control" id="username"
+            aria-describedby="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" formControlName="password" class="form-control" id="password" required>
+        </div>
+        <div *ngIf="submitted && f['password'].errors">
+          <div *ngIf="f['password'].errors?.['required']">Le mot de passe est obligatoire</div>
+          <div *ngIf="f['password'].errors?.['minlength']">Le mot doit faire plus de
+            {{f['password'].errors?.['minlength'].requiredLength}} lettres</div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirmer mot de passe</label>
+          <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword" required>
+          <div *ngIf="submitted && f['confirmPassword'].errors">
+            <div *ngIf="f['confirmPassword'].errors?.['required']">Le mot de passe est obligatoire</div>
+            <div *ngIf="f['confirmPassword'].errors?.['confirmedValidator']">Les mots de passes doivent être
+              les mêmes</div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-6">
+            <button class="btn btn-main w-100" type="submit">Inscription</button>
+          </div>
+          <div class="col-6">
+            <a class="btn btn-reverse w-100" routerLink="/login">Connexion</a>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </section>

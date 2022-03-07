@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './services/auth.guard';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { DatePipe } from '@angular/common';
@@ -40,6 +40,7 @@ export function tokenGetter() {
       },
     }),
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

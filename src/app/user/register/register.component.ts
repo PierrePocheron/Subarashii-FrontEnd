@@ -59,16 +59,16 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  get f() { return this.registerForm.controls; }
+  get f() {
+    return this.registerForm.controls;
+  }
 
   async register() {
     this.submitted = true;
     if (this.registerForm.invalid) {
-      console.log(this.f['password'].errors);
-      
       return;
-  }
-    const result = await this.authS.register(this.registerForm.get);
+    }
+    const result = await this.authS.register(this.registerForm.getRawValue());
     if (result) this.router.navigate(['/']);
     this.message = 'Identifiant ou mot de passe incorrect';
   }

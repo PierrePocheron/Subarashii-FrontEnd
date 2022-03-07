@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiAnimeUrl: 'http://localhost:8080/animes/',
-  backUrl: 'http://localhost:8080/'
+  backUrl: 'http://localhost:8080/',
 };
 
 /*
