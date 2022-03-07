@@ -1,0 +1,70 @@
+<section class="list-anime">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-3" *ngIf="!isSearch">
+        <div class="bg-maingrey p-4">
+          <div>
+            <p class="fw-bold">Rating</p>
+            <div class="form-check">
+              <input class="form-check-input" [checked]="adult" type="checkbox" value="" id="adulte"
+                (click)="changeRating($event)">
+              <label class="form-check-label" for="adulte">
+                18+
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" [checked]="toutPublic" type="checkbox" value="" id="toutPublic"
+                (click)="changeRating($event)">
+              <label class="form-check-label" for="toutPublic">
+                Tout Public
+              </label>
+            </div>
+          </div>
+          <div class="mt-4">
+            <p class="fw-bold">Status</p>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="enCours"
+                (click)="changeStatus($event, 'airing')">
+              <label class="form-check-label" for="enCours">
+                En cours
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="enPause"
+                (click)="changeStatus($event, 'upcoming')">
+              <label class="form-check-label" for="enPause">
+                En Pause
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="termine"
+                (click)="changeStatus($event, 'complete')">
+              <label class="form-check-label" for="termine">
+                Terminé
+              </label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-xl-9 px-4">
+        <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="400"
+          (scrolled)="onScroll()">
+          <div class="col-lg-3 col-md-4 col-6" *ngFor="let anime of animes">
+            <div class="px-xl-2 pb-xl-5 pt-xl-0 px-lg-0 pt-5">
+              <img class="img-fluid" src="https://image.tmdb.org/t/p/w500{{anime.poster_path}}"
+                *ngIf="anime.poster_path">
+              <img class="img-fluid" src="/assets/img/noImage.jpg" *ngIf="!anime.poster_path">
+              <div class="d-flex justify-content-between mt-1 ">
+                <p class="mb-0">{{anime.original_name}}</p>
+                <button class="border-0 bg-transparent p-0"><img class="img-fluid"
+                    src="../../assets/img/SVG/add.svg"></button>
+              </div>
+              <small>{{changeDate(anime.first_air_date)}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

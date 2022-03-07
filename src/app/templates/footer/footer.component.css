@@ -1,0 +1,12 @@
+.footer {
+  background: linear-gradient(rgba(21, 32, 43, 0.6), rgba(21, 32, 43, 0.5)), url("../../../assets/img/bg-site.png");
+  height: 6vh;
+  background-attachment: fixed !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+p {
+  color: var(--main-white);
+}

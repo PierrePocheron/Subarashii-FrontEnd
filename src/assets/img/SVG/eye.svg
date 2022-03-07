@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="39.529" height="26.353" viewBox="0 0 39.529 26.353">
+  <g id="eye-svgrepo-com" transform="translate(0 -85.333)">
+    <path d="M39.529,98.509s-6.588,13.176-19.764,13.176S0,98.509,0,98.509,6.588,85.333,19.764,85.333,39.529,98.509,39.529,98.509Z" fill="#fff0ef"/>
+    <path d="M275.764,98.51S269.176,111.686,256,111.686V85.334C269.176,85.334,275.764,98.51,275.764,98.51Z" transform="translate(-236.236 -0.001)" fill="#ffe3e2"/>
+    <circle cx="9.882" cy="9.882" r="9.882" transform="translate(9.882 88.627)" fill="#ff473f"/>
+    <path d="M256,128a9.882,9.882,0,0,1,0,19.764" transform="translate(-236.236 -39.373)" fill="#d2413a"/>
+    <circle cx="6.588" cy="6.588" r="6.588" transform="translate(13.176 91.921)" fill="#1e2e3b"/>
+    <g transform="translate(13.176 91.921)">
+      <circle cx="3.294" cy="3.294" r="3.294" transform="translate(0 6.588)" fill="#fff"/>
+      <circle cx="2.196" cy="2.196" r="2.196" transform="translate(8.784)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

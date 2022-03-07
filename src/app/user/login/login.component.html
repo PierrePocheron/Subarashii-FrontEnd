@@ -1,0 +1,38 @@
+<div class="position-absolute top-0 start-50 translate-middle-x">
+    <img class="img-fluid" src="../../../assets/img/logo-text-bgwhite.png">
+</div>
+
+<section class="bg-img d-flex align-items-center">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 bg-white p-5">
+                <div>
+                    <a class="d-flex flex-column align-items-center">
+                        <img src="../../../assets/img/SVG/profile.svg" width="50" height="50">
+                    </a>
+                    <h1 class="text-center text-uppercase color-main font-architects-daughter mt-2">Connexion</h1>
+                </div>
+                <form class="mx-sm-5 mt-sm-5 px-sm-4" (ngSubmit)="login()" [formGroup]="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" formControlName="password" class="form-control" id="password" required>
+                    </div>
+                    <div class="text-center mt-sm-5">
+                        <button type="submit" class="btn btn-main">Se connecter</button>
+                        <div class="mt-2">
+                            <a routerLink="">Mot de passe oublié</a>
+                            <span class="color-main"> - </span>
+                            <a routerLink="/register">S'inscrire</a>
+                        </div>
+                    </div>
+                </form>
+                
+            </div> 
+        </div>
+    </div>
+</section>
