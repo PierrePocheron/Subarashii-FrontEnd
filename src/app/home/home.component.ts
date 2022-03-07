@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimeService } from '../services/anime.service';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,47 +10,49 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  private page = 1;
+  private page: number = 1;
   private search: any = {};
-  private order: any = {};
-  private sfw: any = false;
-  private totalPage = 1;
+  private include_adult: boolean = false;
+  private totalPage: number = 1;
   public dataObject: any = {};
   public animes: any = [];
-  public toutPublic = true;
-  public adult = false;
-  public orderBy = 'title';
-  public sort = 'ASC';
-
-  constructor(private apiA: AnimeService, private datePipe: DatePipe) {}
+  public toutPublic: boolean = true;
+  public adult: boolean = false;
+  public orderBy = '';
+  private url = 'fullsearch';
+  public isSearch: boolean = false;
+  constructor(
+    private apiA: AnimeService,
+    private datePipe: DatePipe,
+    private route: ActivatedRoute
+  ) {}
 
   async ngOnInit(): Promise<any> {
-    this.order = {
-      order_by: this.orderBy,
-      sort: this.sort,
-    };
-    await this.getAllAnime(await this.mergeObject());
+    const params = await firstValueFrom(this.route.queryParams);
+    const { search } = params;
+    if (search) {
+      this.isSearch = true;
+      this.url = 'search';
+      return await this.getAllAnime({ query: search });
+    }
+    await this.getAllAnime(this.mergeObject());
   }
 
   async getAllAnime(data: object = {}) {
-    if(this.totalPage >= this.page) {
-      const dataObject: any = await this.apiA.get('discover/' + this.page, data);
+    if (this.totalPage >= this.page) {
+      const dataObject: any = await this.apiA.get(this.url, data);
       this.animes = this.animes.concat(dataObject.body.results);
-      console.log(dataObject.body)
       this.totalPage = dataObject.body.total_pages;
       ++this.page;
     }
-      
   }
 
-  async mergeObject() {
-    const data = await {
-      ...this.order,
+  mergeObject() {
+    const data = {
+      ...{ sort_by: this.orderBy },
       ...{ page: this.page },
-      ...this.search,
-      ...{ sfw: this.sfw },
+      ...{ include_adult: this.include_adult },
     };
-    if (this.sfw) delete data.sfw;
     return data;
   }
 
@@ -80,22 +84,22 @@ export class HomeComponent implements OnInit {
     this.resetValue();
     if (event.target.id == 'toutPublic') {
       if (event.target.checked) {
-        this.sfw = false;
+        this.include_adult = false;
         this.toutPublic = true;
         this.adult = false;
       } else {
-        this.sfw = true;
+        this.include_adult = true;
         this.toutPublic = false;
         this.adult = true;
       }
     }
     if (event.target.id == 'adulte') {
       if (event.target.checked) {
-        this.sfw = true;
+        this.include_adult = true;
         this.adult = true;
         this.toutPublic = false;
       } else {
-        this.sfw = false;
+        this.include_adult = false;
         this.toutPublic = true;
         this.adult = false;
       }

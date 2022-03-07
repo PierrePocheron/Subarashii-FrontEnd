@@ -9,11 +9,9 @@ import { firstValueFrom } from 'rxjs';
 export class AnimeService {
   constructor(private http: HttpClient) {}
 
-  async get(url: string, search: object = {}) {
+  async get(url: string, search: any = {}) {
     const params = {
-      params: {
-        'test': 'pog'
-      }
+      params: search,
     };
     const get$ = this.http.get(environment.apiAnimeUrl + url, params);
     const data = await firstValueFrom(get$);

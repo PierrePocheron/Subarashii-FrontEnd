@@ -1,7 +1,7 @@
 <section class="list-anime">
   <div class="container">
     <div class="row">
-      <div class="col-xl-3">
+      <div class="col-xl-3" *ngIf="!isSearch">
         <div class="bg-maingrey p-4">
           <div>
             <p class="fw-bold">Rating</p>
@@ -52,10 +52,11 @@
           (scrolled)="onScroll()">
           <div class="col-lg-3 col-md-4 col-6" *ngFor="let anime of animes">
             <div class="px-xl-2 pb-xl-5 pt-xl-0 px-lg-0 pt-5">
-              <img class="img-fluid" src="https://image.tmdb.org/t/p/w500{{anime.poster_path}}" *ngIf="anime.poster_path">
+              <img class="img-fluid" src="https://image.tmdb.org/t/p/w500{{anime.poster_path}}"
+                *ngIf="anime.poster_path">
               <img class="img-fluid" src="/assets/img/noImage.jpg" *ngIf="!anime.poster_path">
               <div class="d-flex justify-content-between mt-1 ">
-                <p class="mb-0">{{anime.name}}</p>
+                <p class="mb-0">{{anime.original_name}}</p>
                 <button class="border-0 bg-transparent p-0"><img class="img-fluid"
                     src="../../assets/img/SVG/add.svg"></button>
               </div>
