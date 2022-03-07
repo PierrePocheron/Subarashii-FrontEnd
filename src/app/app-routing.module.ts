@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'anime', component: AnimeComponent },
+  { path: 'anime/:id', component: AnimeComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' },
 ];
 
