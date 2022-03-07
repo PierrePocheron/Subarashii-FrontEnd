@@ -1,3 +1,4 @@
+import { ListService } from './../services/list.service';
 import { Component, OnInit } from '@angular/core';
 import { AnimeService } from '../services/anime.service';
 import { DatePipe } from '@angular/common';
@@ -18,15 +19,16 @@ export class HomeComponent implements OnInit {
   public animes: any = [];
   public toutPublic: boolean = true;
   public adult: boolean = false;
-  public orderBy: string = '';
+  public orderBy: string = 'original_title.asc';
   private url: string = 'fullsearch';
   public isSearch: boolean = false;
-  public genres: any = {};
+  public genres: any = [];
 
   constructor(
     private apiA: AnimeService,
     private datePipe: DatePipe,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private listS: ListService
   ) {}
 
   async ngOnInit(): Promise<any> {
@@ -39,7 +41,6 @@ export class HomeComponent implements OnInit {
     }
     const dataObjet: any = await this.apiA.getGenres();
     this.genres = dataObjet.body;
-    console.log(this.genres);
     await this.getAllAnime(this.mergeObject());
   }
 
@@ -47,7 +48,6 @@ export class HomeComponent implements OnInit {
     if (this.totalPage >= this.page) {
       const dataObject: any = await this.apiA.get(this.url, data);
       this.animes = this.animes.concat(dataObject.body.results);
-      console.log(this.animes);
       this.totalPage = dataObject.body.total_pages;
       ++this.page;
     }
@@ -58,6 +58,8 @@ export class HomeComponent implements OnInit {
       ...{ sort_by: this.orderBy },
       ...{ page: this.page },
       ...{ include_adult: this.include_adult },
+      ...{ with_status: this.search.status },
+      ...{ with_original_language: 'ja' },
     };
     return data;
   }
@@ -71,7 +73,7 @@ export class HomeComponent implements OnInit {
     this.page = 1;
   }
 
-  async changeStatus(event: any, status: string) {
+  async changeStatus(event: any, status: number) {
     this.resetValue();
     delete this.search.status;
     if (event.target.checked) {
@@ -115,5 +117,12 @@ export class HomeComponent implements OnInit {
 
   changeDate(date: Date): any {
     return this.datePipe.transform(date, 'dd/MM/yyyy');
+  }
+
+  async addAnimeList(event: any, idAnime: number) {
+    const data = await this.listS.addAnimeList(idAnime);
+    if (data) {
+      event.target.src = '../../assets/img/SVG/added.svg';
+    }
   }
 }
