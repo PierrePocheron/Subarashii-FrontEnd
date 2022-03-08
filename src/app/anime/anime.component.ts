@@ -71,7 +71,6 @@ export class AnimeComponent implements OnInit {
     } else {
       element.src = '../../assets/img/SVG/notseen.svg';
     }
-    console.log({ data });
   }
 
   async getEpisodeViews() {
