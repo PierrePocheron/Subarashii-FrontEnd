@@ -16,6 +16,8 @@ export class AnimeComponent implements OnInit {
   idAnime: any = 0;
   public saisons: any[] = [];
   public episodesView: any[] = [];
+  public userLists: any[] = [];
+  public myAnimeIdSeeList: number[] = [];
   constructor(
     private animeS: AnimeService,
     private listS: ListService,
@@ -36,6 +38,8 @@ export class AnimeComponent implements OnInit {
     }
     await this.getEpisodeViews();
     this.episodesView = this.episodesView.map((el) => el.idApiEpisode);
+    await this.getMyList();
+    this.myAnimeIdSeeList = await this.listS.myAnimeIdSeeList();
   }
 
   changeDate(date: Date): any {
@@ -71,5 +75,14 @@ export class AnimeComponent implements OnInit {
 
   async getEpisodeViews() {
     this.episodesView = await this.listS.getEpisodeViews(this.anime.idApi);
+  }
+
+  async getMyList() {
+    this.userLists = await this.listS.getMyList();
+  }
+
+  async addAnimeList(idAnime: number, idList: number) {
+    const data = await this.listS.addAnimeList(idAnime, idList);
+    this.myAnimeIdSeeList.push(idAnime);
   }
 }
