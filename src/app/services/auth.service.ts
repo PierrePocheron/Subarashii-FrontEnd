@@ -41,6 +41,11 @@ export class AuthService {
     return false;
   }
 
+  public logout() {
+    localStorage.removeItem('token');
+    window.location.href = '/login';
+  }
+
   public userConnected(): string {
     const token: any = localStorage.getItem('token');
     const decodedToken: any = jwt_decode(token, { header: true });

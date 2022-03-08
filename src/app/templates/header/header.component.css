@@ -44,3 +44,11 @@ a {
   pointer-events: pointer;
   text-decoration: none;
 }
+
+.dropdown-item {
+  color: var(--main-color);
+}
+
+.dropdown-item:hover {
+  color: black;
+}

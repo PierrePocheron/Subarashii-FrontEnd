@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   search: string = '';
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, private authS: AuthService) {
     this.route.queryParams.subscribe((params) => {
       this.search = params['search'];
     });
@@ -23,5 +24,9 @@ export class HeaderComponent implements OnInit {
       .then(() => {
         window.location.reload();
       });
+  }
+
+  logout() {
+    this.authS.logout();
   }
 }
