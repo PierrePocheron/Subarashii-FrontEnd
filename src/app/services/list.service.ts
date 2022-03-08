@@ -10,7 +10,7 @@ export class ListService {
   constructor(private http: HttpClient) {}
 
   async getMyList() {
-    const $get = this.http.get(environment.backUrl + 'userlists/mylist');
+    const $get = this.http.get(environment.backUrl + 'userlists/all');
     const data: any = await firstValueFrom($get);
     return data.body;
   }
@@ -59,6 +59,14 @@ export class ListService {
 
   async getEpisodeViews(idAnime: number) {
     const $get = this.http.get(environment.backUrl + 'views/animes/' + idAnime);
+    const data: any = await firstValueFrom($get);
+    return data.body;
+  }
+
+  async getAnimeList(idList: number) {
+    const $get = this.http.get(
+      environment.backUrl + 'userlists/' + idList + '/animes'
+    );
     const data: any = await firstValueFrom($get);
     return data.body;
   }

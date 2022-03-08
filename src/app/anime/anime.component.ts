@@ -36,7 +36,6 @@ export class AnimeComponent implements OnInit {
     }
     await this.getEpisodeViews();
     this.episodesView = this.episodesView.map((el) => el.idApiEpisode);
-    console.log(this.episodesView);
   }
 
   changeDate(date: Date): any {
@@ -68,7 +67,6 @@ export class AnimeComponent implements OnInit {
     } else {
       element.src = '../../assets/img/SVG/notseen.svg';
     }
-    console.log({ data });
   }
 
   async getEpisodeViews() {
