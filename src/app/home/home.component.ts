@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   public genres: any = [];
   public loading: boolean = false;
   public myAnimeIdSeeList: number[] = [];
+  public userLists: any = [];
 
   constructor(
     private apiA: AnimeService,
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit {
   async ngOnInit(): Promise<any> {
     const params = await firstValueFrom(this.route.queryParams);
     const { search } = params;
+    await this.getMyList();
     if (search) {
       this.isSearch = true;
       this.url = 'search';
@@ -62,6 +64,10 @@ export class HomeComponent implements OnInit {
         this.loading = false;
       }
     }
+  }
+  
+  async getMyList() {
+    this.userLists = await this.listS.getMyList();
   }
 
   mergeObject() {
@@ -131,12 +137,9 @@ export class HomeComponent implements OnInit {
     return this.datePipe.transform(date, 'dd/MM/yyyy');
   }
 
-  async addAnimeList(event: any, idAnime: number) {
-    const data = await this.listS.addAnimeList(idAnime);
-    if (data) {
-      event.target.src = '../../assets/img/SVG/added.svg';
-      event.target.className = 'img-fluid';
-    }
+  async addAnimeList(idAnime: number, idList: number) {
+    const data = await this.listS.addAnimeList(idAnime, idList);
+    this.myAnimeIdSeeList.push(idAnime);
   }
 
   async filterGender(event: any) {

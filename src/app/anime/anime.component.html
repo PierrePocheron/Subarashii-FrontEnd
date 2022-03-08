@@ -7,8 +7,23 @@
         <p>{{anime.nomTraduit}}</p>
       </div>
       <div class="col-12 text-center">
-        <img class="img-fluid icon-white me-2" src="../../assets/img/SVG/add.svg" width="30" height="30">
-        <img class="img-fluid icon-red ms-2" src="../../assets/img/SVG/heart.svg" width="30" height="30">
+
+
+        <div class="dropdown" *ngIf="!myAnimeIdSeeList.includes(anime.id)">
+          <button class="border-0 bg-transparent p-0" [attr.id]="'dropdownMenuButton'+anime.id"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="img-fluid icon-white me-2" src="../../assets/img/SVG/add.svg" width="30" height="30">
+          </button>
+
+          <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdownMenuButton'+anime.id">
+            <li *ngFor="let list of userLists" (click)="addAnimeList(anime.id, list.id)"><a class="dropdown-item">{{
+                list.nom }}</a></li>
+          </ul>
+        </div>
+
+        <div class="border-0 bg-transparent p-0" *ngIf="myAnimeIdSeeList.includes(anime.id)">
+          <img class="img-fluid" src="../../assets/img/SVG/added.svg" height="30" width="30">
+        </div>
       </div>
     </div>
   </div>
@@ -117,7 +132,48 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="pills-avis" role="tabpanel" aria-labelledby="pills-avis-tab">Avis</div>
+      <div class="tab-pane fade" id="pills-avis" role="tabpanel" aria-labelledby="pills-avis-tab">
+
+        <div class="comments">
+
+          <div class="comment mx-4 mb-5">
+            <div class="ms-3 mb-4 d-flex align-items-center">
+              <img src="../../../assets/img/SVG/profile.svg" width="40" height="40">
+              <small class="fw-bold ms-2">Username</small>
+            </div>
+            <p>Ceci est un commentaire</p>
+          </div>
+
+          <div class="comment mx-4 mb-5">
+            <div class="ms-3 mb-4 d-flex align-items-center">
+              <img src="../../../assets/img/SVG/profile.svg" width="40" height="40">
+              <small class="fw-bold ms-2">Username</small>
+            </div>
+            <p>Bonjour, je sais pas quoi dire. J'aime beaucoup cet anime :)</p>
+          </div>
+
+          <div class="comment mx-4 mb-5">
+            <div class="ms-3 mb-4 d-flex align-items-center">
+              <img src="../../../assets/img/SVG/profile.svg" width="40" height="40">
+              <small class="fw-bold ms-2">Username</small>
+            </div>
+            <p>Un véritable chef d'oeuvre.. J'aimerai pouvoir retrouver un anime d'une telle qualité. Si quelqu'un a des
+              suggestions, je suis preneur !</p>
+          </div>
+
+        </div>
+
+        <div class="new-comment mx-4 my-5 position-relative">
+          <div>
+            <label for="exampleFormControlTextarea1" class="form-label">Laisse ton commentaire</label>
+            <textarea class="form-control overflow-hidden" id="exampleFormControlTextarea1" rows="2"></textarea>
+          </div>
+          <button class="border-0 bg-transparent p-0 position-absolute btn-send">
+            <img class="icon-main" src="../../assets/img/SVG/send.svg" width="20" height="20">
+          </button>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>

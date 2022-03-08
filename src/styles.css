@@ -54,6 +54,14 @@ body {
   cursor: pointer;
 }
 
+.dropdown-item {
+  color: var(--main-color);
+}
+
+.dropdown-item:hover {
+  color: black;
+}
+
 /*
 ----------------------------------
 2. Texte
