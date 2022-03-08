@@ -7,25 +7,6 @@
   padding-top: 80px;
 }
 
-.nav-pills {
-  border-bottom: 1px solid var(--main-color);
-}
-
-.nav-link {
-  border-radius: 0;
-  color: black;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.nav-link.active {
-  background-color: var(--main-color) !important;
-}
-
-.nav-link.active .icon-nav {
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
-}
-
 .accordion-button {
   border: 1px solid black;
   text-transform: uppercase;

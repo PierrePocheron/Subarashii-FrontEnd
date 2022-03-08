@@ -1,0 +1,17 @@
+section {
+    padding-top: 80px;
+    min-height: 94vh;
+}
+
+.nav-link {
+    text-align: left;
+}
+
+.nav-pills {
+    border: 0;
+}
+
+.btn-main:hover img {
+    filter: invert(51%) sepia(62%) saturate(5708%) hue-rotate(337deg)
+    brightness(103%) contrast(101%);
+}

@@ -38,4 +38,9 @@ export class AuthService {
     if (token) return !this.jwtHelper.isTokenExpired(token);
     return false;
   }
+
+  public logout() {
+    localStorage.removeItem('token');
+    window.location.href = '/login';
+  }
 }

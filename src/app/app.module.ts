@@ -15,6 +15,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { DatePipe } from '@angular/common';
 import { AnimeComponent } from './anime/anime.component';
+import { AnimesListComponent } from './user/animes-list/animes-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -30,6 +31,7 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
     AnimeComponent,
+    AnimesListComponent,
   ],
   imports: [
     BrowserModule,

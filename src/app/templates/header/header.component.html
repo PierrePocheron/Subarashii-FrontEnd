@@ -24,6 +24,11 @@
           <a class="item-nav mx-2">Mon Compte</a>
         </li>
         <hr class="bg-main my-2">
+        <li class="d-flex align-items-center mb-1" (click)="logout()">
+          <img src="../../../assets/img/SVG/logout.svg" width="20">
+          <a class="item-nav mx-2">Déconnexion</a>
+        </li>
+        <hr class="bg-main my-2">
       </ul>
       <form class="d-flex">
         <div class="search-input d-flex position-relative w-100">
@@ -51,9 +56,16 @@
             [(ngModel)]="search">
         </div>
 
-        <a class="hover-zoom d-flex flex-column align-items-center" title="Mon Compte">
-          <img src="../../../assets/img/SVG/profile.svg" width="40" height="40">
-        </a>
+        <div class="dropdown">
+          <a class="hover-zoom d-flex flex-column align-items-center" title="Mon Compte" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../../../assets/img/SVG/profile.svg" width="40" height="40">
+          </a>
+          
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" (click)="logout()">Déconnexion</a></li>
+          </ul>
+        </div>
+        
 
       </div>
     </div>
