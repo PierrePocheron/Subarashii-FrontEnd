@@ -8,7 +8,7 @@
 }
 
 .sectionDetail {
-  min-height: 55vh
+  min-height: 55vh;
 }
 
 .nav-pills {
@@ -27,7 +27,8 @@
 }
 
 .nav-link.active .icon-nav {
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
+    brightness(102%) contrast(102%);
 }
 
 .accordion-button {
@@ -46,7 +47,8 @@
 }
 
 .accordion-button:not(.collapsed)::after {
-  filter: invert(51%) sepia(62%) saturate(5708%) hue-rotate(337deg) brightness(103%) contrast(101%);
+  filter: invert(51%) sepia(62%) saturate(5708%) hue-rotate(337deg)
+    brightness(103%) contrast(101%);
 }
 
 .episode-label {
@@ -67,19 +69,63 @@
   top: 23px;
 }
 
-.episode-input[type="checkbox"]:checked+.episode-label {
+.episode-input[type="checkbox"]:checked + .episode-label {
   color: var(--main-white) !important;
   background-color: var(--main-color);
   border-color: var(--main-color);
   transition: 0.1s;
 }
 
-.episode-input[type="checkbox"]:checked+.episode-label img {
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+.episode-input[type="checkbox"]:checked + .episode-label img {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
+    brightness(102%) contrast(102%);
   transition: 0.1s;
 }
 
-.saison-input[type="checkbox"]:checked+.saison-label img {
-  filter: invert(51%) sepia(62%) saturate(5708%) hue-rotate(337deg) brightness(103%) contrast(101%);
+.saison-input[type="checkbox"]:checked + .saison-label img {
+  filter: invert(51%) sepia(62%) saturate(5708%) hue-rotate(337deg)
+    brightness(103%) contrast(101%);
   transition: 0.1s;
+}
+
+.comment p {
+  position: relative;
+  padding: 1.125em 1.5em;
+  border-radius: 1rem;
+  box-shadow: 0 0.125rem 0.5rem rgb(211 211 211 / 35%),
+    0 0.0625rem 0.125rem rgb(0 0 0 / 20%);
+}
+
+.comments {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.comment p::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 100%;
+  left: 1.5em;
+  border: 0.75rem solid transparent;
+  border-top: none;
+  border-bottom-color: #fff;
+  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, 0.1));
+}
+
+.btn-send {
+  top: 45px;
+  right: 20px;
+}
+
+.btn-send:hover img {
+  filter: invert(0%) sepia(0%) saturate(7471%) hue-rotate(260deg)
+    brightness(92%) contrast(108%);
+  transition: 0.1s;
+}
+
+textarea {
+  resize: none;
+  padding-right: 60px;
 }
