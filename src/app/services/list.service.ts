@@ -1,4 +1,3 @@
-import { Response } from './../interfaces/response';
 import { firstValueFrom, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -41,6 +40,25 @@ export class ListService {
 
   async myAnimeIdSeeList() {
     const $get = this.http.get(environment.backUrl + 'users/idapianimes');
+    const data: any = await firstValueFrom($get);
+    return data.body;
+  }
+
+  async changeStateViewEpisode(idAnime: number, idEpisode: number) {
+    const put$ = this.http.put(
+      environment.backUrl +
+        'views/animes/' +
+        idAnime +
+        '/episodes/' +
+        idEpisode,
+      null
+    );
+    const data: any = await firstValueFrom(put$);
+    return data.body;
+  }
+
+  async getEpisodeViews(idAnime: number) {
+    const $get = this.http.get(environment.backUrl + 'views/animes/' + idAnime);
     const data: any = await firstValueFrom($get);
     return data.body;
   }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { firstValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +36,7 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = this.jwtHelper.tokenGetter();
+    // console.log(this.userConnected());
     if (token) return !this.jwtHelper.isTokenExpired(token);
     return false;
   }
@@ -42,5 +44,12 @@ export class AuthService {
   public logout() {
     localStorage.removeItem('token');
     window.location.href = '/login';
+  }
+
+  public userConnected(): string {
+    const token: any = localStorage.getItem('token');
+    const decodedToken: any = jwt_decode(token, { header: true });
+    console.log(decodedToken);
+    return decodedToken.username;
   }
 }
