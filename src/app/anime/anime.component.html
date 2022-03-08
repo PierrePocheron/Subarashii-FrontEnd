@@ -9,19 +9,19 @@
       <div class="col-12 text-center">
 
 
-        <div class="dropdown" *ngIf="!myAnimeIdSeeList.includes(anime.id)">
-          <button class="border-0 bg-transparent p-0" [attr.id]="'dropdownMenuButton'+anime.id"
+        <div class="dropdown" *ngIf="!myAnimeIdSeeList.includes(anime.idApi)">
+          <button class="border-0 bg-transparent p-0" [attr.id]="'dropdownMenuButton'+anime.idApi"
             data-bs-toggle="dropdown" aria-expanded="false">
             <img class="img-fluid icon-white me-2" src="../../assets/img/SVG/add.svg" width="30" height="30">
           </button>
 
-          <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdownMenuButton'+anime.id">
-            <li *ngFor="let list of userLists" (click)="addAnimeList(anime.id, list.id)"><a class="dropdown-item">{{
+          <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdownMenuButton'+anime.idApi">
+            <li *ngFor="let list of userLists" (click)="addAnimeList(anime.idApi, list.id)"><a class="dropdown-item">{{
                 list.nom }}</a></li>
           </ul>
         </div>
 
-        <div class="border-0 bg-transparent p-0" *ngIf="myAnimeIdSeeList.includes(anime.id)">
+        <div class="border-0 bg-transparent p-0" *ngIf="myAnimeIdSeeList.includes(anime.idApi)">
           <img class="img-fluid" src="../../assets/img/SVG/added.svg" height="30" width="30">
         </div>
       </div>

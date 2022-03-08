@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
       }
     }
   }
-  
+
   async getMyList() {
     this.userLists = await this.listS.getMyList();
   }
