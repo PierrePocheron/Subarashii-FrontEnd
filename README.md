@@ -1,5 +1,3 @@
-test complet ci 08/03 - 3
-
 # Subarashii
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
