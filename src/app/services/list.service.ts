@@ -1,4 +1,5 @@
-import { firstValueFrom } from 'rxjs';
+import { Response } from './../interfaces/response';
+import { firstValueFrom, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,8 +12,8 @@ export class ListService {
 
   async getMyList() {
     const $get = this.http.get(environment.backUrl + 'userlists/mylist');
-    const data = await firstValueFrom($get);
-    return data;
+    const data: any = await firstValueFrom($get);
+    return data.body;
   }
 
   async addList(dataForm: any) {
@@ -23,8 +24,8 @@ export class ListService {
 
   async addAnimeList(idAnime: number, idList: number = -1) {
     if (idList == -1) {
-      const myList: any = await this.getMyList();
-      idList = myList.body[0].id;
+      const myList = await this.getMyList();
+      idList = myList[0].id;
     }
     const json = {
       idUserList: idList,
@@ -36,5 +37,11 @@ export class ListService {
     );
     await firstValueFrom($put);
     return true;
+  }
+
+  async myAnimeIdSeeList() {
+    const $get = this.http.get(environment.backUrl + 'users/idapianimes');
+    const data: any = await firstValueFrom($get);
+    return data.body;
   }
 }

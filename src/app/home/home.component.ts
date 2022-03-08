@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   public isSearch: boolean = false;
   public genres: any = [];
   public loading: boolean = false;
+  public myAnimeIdSeeList: number[] = [];
 
   constructor(
     private apiA: AnimeService,
@@ -39,10 +40,13 @@ export class HomeComponent implements OnInit {
     if (search) {
       this.isSearch = true;
       this.url = 'search';
-      return await this.getAllAnime({ query: search });
+      await this.getAllAnime({ query: search });
+      this.myAnimeIdSeeList = await this.listS.myAnimeIdSeeList();
+      return;
     }
     const dataObjet: any = await this.apiA.getGenres();
     this.genres = dataObjet.body;
+    this.myAnimeIdSeeList = await this.listS.myAnimeIdSeeList();
     await this.getAllAnime(this.mergeObject());
   }
 
