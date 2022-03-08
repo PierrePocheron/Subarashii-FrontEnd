@@ -15,14 +15,18 @@
   cursor: pointer;
 }
 
-input[type="checkbox"]:checked + .genres-label {
-	color: var(--main-white) !important;
+input[type="checkbox"]:checked+.genres-label {
+  color: var(--main-white) !important;
   background-color: var(--main-color);
   border-color: var(--main-color);
   transition: 0.1s;
 }
 
-input[type="checkbox"]:checked + .genres-label img {
+input[type="checkbox"]:checked+.genres-label img {
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
   transition: 0.1s;
+}
+
+.cursorPointer {
+  cursor: pointer
 }

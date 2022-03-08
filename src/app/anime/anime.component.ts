@@ -24,7 +24,6 @@ export class AnimeComponent implements OnInit {
   async ngOnInit() {
     const data: any = await this.animeS.get(this.idAnime);
     this.anime = data.body;
-    console.log(this.anime);
   }
 
   changeDate(date: Date): any {
