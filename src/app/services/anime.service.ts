@@ -17,4 +17,15 @@ export class AnimeService {
     const data = await firstValueFrom(get$);
     return data;
   }
+
+  async getGenres(id: number = -1) {
+    const get$ = this.http.get(environment.backUrl + 'genres/all');
+    var data: any = await firstValueFrom(get$);
+    data.body = data.body.filter((el: any) => {
+      if (el.id != 2) {
+        return el;
+      }
+    });
+    return data;
+  }
 }

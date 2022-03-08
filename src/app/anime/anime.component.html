@@ -1,0 +1,271 @@
+<section class="bg-img d-flex align-items-center"
+  [ngStyle]="{'background': 'linear-gradient(rgba(21, 32, 43, 0.5), rgba(21, 32, 43, 0.5)), url(' + anime.backgroundPath + ')'}">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-white text-center font-architects-daughter text-uppercase">
+        <h1>{{anime.originalName}}</h1>
+        <p>{{anime.nomTraduit}}</p>
+      </div>
+      <div class="col-12 text-center">
+        <img class="img-fluid icon-white me-2" src="../../assets/img/SVG/add.svg" width="30" height="30">
+        <img class="img-fluid icon-red ms-2" src="../../assets/img/SVG/heart.svg" width="30" height="30">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="my-5">
+  <div class="container">
+    <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-infos-tab" data-bs-toggle="pill" data-bs-target="#pills-infos"
+          type="button" role="tab" aria-controls="pills-infos" aria-selected="true">
+          <img src="../../assets/img/SVG/infos.svg" class="img-fluid icon-nav icon-main" height="20" width="20">
+          Infos
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-episodes-tab" data-bs-toggle="pill" data-bs-target="#pills-episodes"
+          type="button" role="tab" aria-controls="pills-episodes" aria-selected="false">
+          <img src="../../assets/img/SVG/episodes.svg" class="img-fluid icon-nav icon-main" height="20" width="20">
+          Episodes
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-avis-tab" data-bs-toggle="pill" data-bs-target="#pills-avis" type="button"
+          role="tab" aria-controls="pills-avis" aria-selected="false">
+          <img src="../../assets/img/SVG/avis.svg" class="img-fluid icon-nav icon-main" height="20" width="20">
+          Avis
+        </button>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-infos" role="tabpanel" aria-labelledby="pills-infos-tab">
+
+        <div class="row my-5">
+          <div class="col-md-4 text-center">
+            <img class="img-fluid" src={{anime.image}}>
+          </div>
+          <div class="col-md-8 mt-3 mt-md-0">
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <div *ngFor="let genre of anime.genres">
+                <div class="bg-main text-white px-4 py-3 me-2" *ngIf="genre.nom != 'Animation'">
+                  <img class="icon-white" src="../../assets/img/SVG/genres/{{genre.id}}.svg" width="20" height="20">
+                  <span class="ms-2 fw-bold">{{genre.nom}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="my-4">
+              <p>
+                <img class="img-fluid icon-main" src="../../assets/img/SVG/status.svg" height="15" width="15">
+                <span class="fw-bold"> Status : </span>
+                {{anime.enCours ? 'En cours' : 'Terminée'}}
+                <small class="bg-main text-white fw-bold p-1">{{changeDate(anime.dateCommencement)}} >
+                  {{changeDate(anime.dateFin)}}</small>
+              </p>
+              <p>
+                <img class="img-fluid icon-main" src="../../assets/img/SVG/classification.svg" height="15" width="15">
+                <span class="fw-bold"> Classification : </span>
+                {{anime.adult ? '18+' : 'Tout public'}}
+              </p>
+            </div>
+            <div class="my-4">
+              <p class="fw-bold mb-1">
+                Synopsis
+              </p>
+              <p>{{anime.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-episodes" role="tabpanel" aria-labelledby="pills-episodes-tab">
+
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item border-0">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button class="accordion-button my-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Saison 1
+                <div class="w-85 ms-auto text-end">
+                  <input class="saison-input d-none" id="s1" type="checkbox" name="saisons"/>
+                  <label class="saison-label" for="s1"><img src="../../assets/img/SVG/nonvue.svg" width="20" height="20"></label>
+                </div>
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body p-0">
+                <div class="row">
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s1e1" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s1e1">
+                      Episode 1
+                      <img src="../../assets/img/SVG/nonvue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s1e2" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s1e2">
+                      Episode 2
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s1e3" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s1e3">
+                      Episode 3
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s1e4" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s1e4">
+                      Episode 4
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s1e5" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s1e5">
+                      Episode 5
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s1e6" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s1e6">
+                      Episode 6
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                </div>  
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item border-0">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button class="accordion-button my-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Saison 2
+                <div class="w-85 ms-auto text-end">
+                  <input class="saison-input d-none" id="s2" type="checkbox" name="saisons"/>
+                  <label class="saison-label" for="s2"><img src="../../assets/img/SVG/nonvue.svg" width="20" height="20"></label>
+                </div>
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body p-0">
+
+                <div class="row">
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s2e1" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s2e1">
+                      Episode 1
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s2e2" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s2e2">
+                      Episode 2
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s2e3" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s2e3">
+                      Episode 3
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s2e4" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s2e4">
+                      Episode 4
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s2e5" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s2e5">
+                      Episode 5
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s2e6" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s2e6">
+                      Episode 6
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item border-0">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button class="accordion-button my-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                Saison 3
+                <div class="w-85 ms-auto text-end">
+                  <input class="saison-input d-none" id="s3" type="checkbox" name="saisons"/>
+                  <label class="saison-label" for="s3"><img src="../../assets/img/SVG/nonvue.svg" width="20" height="20"></label>
+                </div>
+              </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body p-0">
+
+                <div class="row">
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s3e1" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s3e1">
+                      Episode 1
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s3e2" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s3e2">
+                      Episode 2
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s3e3" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s3e3">
+                      Episode 3
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s3e4" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s3e4">
+                      Episode 4
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s3e5" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s3e5">
+                      Episode 5
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                  <div class="col-12 mb-1 noselect position-relative">
+                    <input class="episode-input" id="s3e6" type="checkbox" name="episodes"/>
+                    <label class="episode-label px-5 py-3" for="s3e6">
+                      Episode 6
+                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="tab-pane fade" id="pills-avis" role="tabpanel" aria-labelledby="pills-avis-tab">Avis</div>
+    </div>
+  </div>
+</section>

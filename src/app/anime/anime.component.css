@@ -1,0 +1,81 @@
+.bg-img {
+  height: 30vh;
+  background-attachment: fixed !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  padding-top: 80px;
+}
+
+.nav-pills {
+  border-bottom: 1px solid var(--main-color);
+}
+
+.nav-link {
+  border-radius: 0;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.nav-link.active {
+  background-color: var(--main-color) !important;
+}
+
+.nav-link.active .icon-nav {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+}
+
+.accordion-button {
+  border: 1px solid black;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.accordion-button:not(.collapsed) {
+  color: black;
+  background-color: var(--main-white);
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgb(225 52 52 / 23%);
+}
+
+.accordion-button:not(.collapsed)::after {
+  filter: invert(51%) sepia(62%) saturate(5708%) hue-rotate(337deg) brightness(103%) contrast(101%);
+}
+
+.episode-label {
+  cursor: pointer;
+  border: 1px solid #dadada;
+  width: 100%;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.episode-input {
+  position: absolute;
+  display: none;
+  cursor: pointer;
+  right: 33px;
+  top: 23px;
+}
+
+.episode-input[type="checkbox"]:checked + .episode-label {
+	color: var(--main-white) !important;
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  transition: 0.1s;
+}
+
+.episode-input[type="checkbox"]:checked + .episode-label img {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+  transition: 0.1s;
+}
+
+.saison-input[type="checkbox"]:checked + .saison-label img {
+  filter: invert(51%) sepia(62%) saturate(5708%) hue-rotate(337deg) brightness(103%) contrast(101%);
+  transition: 0.1s;
+}

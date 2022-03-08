@@ -35,6 +35,20 @@ body {
     font-family: 'Architects Daughter', cursive;
 }
 
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.w-85 {
+    width: 85%;
+}
+
 /*
 ----------------------------------
 2. Texte
@@ -43,28 +57,6 @@ body {
 
 h1 {
     font-size: 32px;
-}
-
-h2 {
-    font-size: 28px;
-    position: relative;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 80px;
-    font-weight: bold;
-}
-
-h2::after {
-    background-color: var(--main-color);
-    content: "";
-    display: block;
-    height: 2px;
-    left: 50%;
-    bottom: -50%;
-    position: absolute;
-    transform: translate(-50%, 0);
-    width: 80px;
-    border-radius: 10px;
 }
 
 h3 {
@@ -81,7 +73,6 @@ h3 {
 
 a {
     color: var(--main-color);
-    font-size: 14px;
     text-decoration: none;
     transition: 0.2s;
 }
@@ -159,6 +150,18 @@ textarea {
 
 .border-main-color {
     border: 1px solid var(--main-color);
+}
+
+.icon-white {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+}
+
+.icon-main {
+    filter: invert(51%) sepia(62%) saturate(5708%) hue-rotate(337deg) brightness(103%) contrast(101%);
+}
+
+.icon-black {
+    filter: invert(0%) sepia(0%) saturate(7471%) hue-rotate(260deg) brightness(92%) contrast(108%);
 }
 
 /*

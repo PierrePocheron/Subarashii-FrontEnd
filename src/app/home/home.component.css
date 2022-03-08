@@ -1,3 +1,32 @@
 .list-anime {
   padding: 130px 0;
 }
+
+.genres-label {
+  cursor: pointer;
+  border: 1px solid black;
+  color: black;
+  font-weight: bold;
+}
+
+.genres-input {
+  position: absolute;
+  display: none;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked+.genres-label {
+  color: var(--main-white) !important;
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  transition: 0.1s;
+}
+
+input[type="checkbox"]:checked+.genres-label img {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+  transition: 0.1s;
+}
+
+.cursorPointer {
+  cursor: pointer
+}

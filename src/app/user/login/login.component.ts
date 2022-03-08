@@ -6,24 +6,24 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
-    email: new FormControl('' ,[Validators.required]),
-    password: new FormControl('' ,[Validators.required, Validators.minLength(3)]),
+    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
   });
   message = '';
-  constructor(private authS: AuthService, private router: Router) { }
+  constructor(private authS: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  async login(){
+  async login() {
     const result = await this.authS.login(this.loginForm.value);
-    if(result)
-      this.router.navigate(['/']);
+    if (result) window.location.href = '/';
     this.message = 'Identifiant ou mot de passe incorrect';
   }
-
 }

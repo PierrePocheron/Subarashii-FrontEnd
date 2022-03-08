@@ -13,6 +13,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  public urlRedirect = '';
   constructor(private router: Router, private auth: AuthService) {}
 
   canActivate():
@@ -21,9 +22,11 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (!this.auth.isAuthenticated()) {
-      this.router.navigate(['login']);
+      this.urlRedirect = '/login';
+      window.location.href = '/login';
       return false;
     }
+    this.urlRedirect = '';
     return true;
   }
 }

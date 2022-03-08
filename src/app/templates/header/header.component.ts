@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  async ngOnInit() {}
 
   onEnter() {
     this.router
