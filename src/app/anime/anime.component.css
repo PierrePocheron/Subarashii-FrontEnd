@@ -7,6 +7,10 @@
   padding-top: 80px;
 }
 
+.sectionDetail {
+  min-height: 55vh
+}
+
 .nav-pills {
   border-bottom: 1px solid var(--main-color);
 }
@@ -63,19 +67,19 @@
   top: 23px;
 }
 
-.episode-input[type="checkbox"]:checked + .episode-label {
-	color: var(--main-white) !important;
+.episode-input[type="checkbox"]:checked+.episode-label {
+  color: var(--main-white) !important;
   background-color: var(--main-color);
   border-color: var(--main-color);
   transition: 0.1s;
 }
 
-.episode-input[type="checkbox"]:checked + .episode-label img {
+.episode-input[type="checkbox"]:checked+.episode-label img {
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
   transition: 0.1s;
 }
 
-.saison-input[type="checkbox"]:checked + .saison-label img {
+.saison-input[type="checkbox"]:checked+.saison-label img {
   filter: invert(51%) sepia(62%) saturate(5708%) hue-rotate(337deg) brightness(103%) contrast(101%);
   transition: 0.1s;
 }
