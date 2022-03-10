@@ -11,26 +11,27 @@ export class CommentService {
   constructor(private http: HttpClient, private responseS: ResponseService) {}
 
   async getComment(idAnime: number) {
-    const dataP = this.http.get(
-      environment.backUrl + 'animes-comments/' + idAnime
-    );
-    const data: any = await firstValueFrom(dataP);
-    return data.body;
+    try {
+      const dataP = this.http.get(
+        environment.backUrl + 'animes-comments/' + idAnime
+      );
+      const data: any = await firstValueFrom(dataP);
+      return data.body;
+    } catch (error) {
+      return this.responseS.ErrorF(error);
+    }
   }
 
   async addComment(data: any) {
     try {
       const dataP = this.http.post(
         environment.backUrl + 'animes-comments',
-        null
+        data
       );
-      await firstValueFrom(dataP);
-      return true;
+      const res = await firstValueFrom(dataP);
+      return this.responseS.SuccessF(res);
     } catch (error: any) {
-      console.log(error.message);
-
-      this.responseS.ErrorF(error);
-      return false;
+      return this.responseS.ErrorF(error);
     }
   }
 }

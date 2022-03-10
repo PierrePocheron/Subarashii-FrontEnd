@@ -1,15 +1,40 @@
+import { ToastService } from './../../services/toast.service';
 import { Component, OnInit } from '@angular/core';
+import { toastInfo } from 'src/app/toast';
 
+declare var bootstrap: any;
+declare var $: any;
 @Component({
   selector: 'app-toasts',
   templateUrl: './toasts.component.html',
-  styleUrls: ['./toasts.component.css']
+  styleUrls: ['./toasts.component.css'],
 })
 export class ToastsComponent implements OnInit {
+  myToast: any;
 
-  constructor() { }
+  _toastInf!: toastInfo;
 
-  ngOnInit(): void {
+  constructor(private toastS: ToastService) {
+    this.toastS.toastStatut.subscribe((data) => (this.toastInf = data));
   }
 
+  set toastInf(toastInfo: any) {
+    if (toastInfo == undefined || !this.myToast) {
+      var myToastEl = document.getElementById('toast');
+      this.myToast = bootstrap.Toast.getOrCreateInstance(myToastEl);
+      return;
+    }
+
+    if (!toastInfo.isShow) {
+      return;
+    } else {
+      this._toastInf = toastInfo;
+      this.myToast.show();
+    }
+  }
+
+  ngOnInit(): void {
+    var myToastEl = document.getElementById('toast');
+    this.myToast = bootstrap.Toast.getOrCreateInstance(myToastEl);
+  }
 }
