@@ -1,0 +1,24 @@
+.left-blue-line {
+  border-left: 3px solid #3796d4;
+}
+.left-green-line {
+  border-left: 3px solid #5ac9a4;
+}
+.left-red-line {
+  border-left: 3px solid #c95a5a;
+}
+
+.icon-blue {
+  filter: invert(60%) sepia(15%) saturate(2773%) hue-rotate(173deg)
+    brightness(87%) contrast(90%);
+}
+
+.icon-green {
+  filter: invert(87%) sepia(5%) saturate(3961%) hue-rotate(99deg)
+    brightness(86%) contrast(80%);
+}
+
+.icon-red {
+  filter: invert(61%) sepia(62%) saturate(2062%) hue-rotate(318deg)
+    brightness(83%) contrast(88%);
+}
