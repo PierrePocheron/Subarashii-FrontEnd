@@ -16,6 +16,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { DatePipe } from '@angular/common';
 import { AnimeComponent } from './anime/anime.component';
 import { AnimesListComponent } from './user/animes-list/animes-list.component';
+import { ToastsComponent } from './templates/toasts/toasts.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -32,6 +33,7 @@ export function tokenGetter() {
     RegisterComponent,
     AnimeComponent,
     AnimesListComponent,
+    ToastsComponent,
   ],
   imports: [
     BrowserModule,
