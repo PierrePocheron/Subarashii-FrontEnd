@@ -16,6 +16,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { DatePipe } from '@angular/common';
 import { AnimeComponent } from './anime/anime.component';
 import { AnimesListComponent } from './user/animes-list/animes-list.component';
+import { GravatarModule } from 'ngx-gravatar';
 import { ToastsComponent } from './templates/toasts/toasts.component';
 
 export function tokenGetter() {
@@ -47,6 +48,7 @@ export function tokenGetter() {
     }),
     ReactiveFormsModule,
     FormsModule,
+    GravatarModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
