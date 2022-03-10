@@ -1,5 +1,5 @@
 .bg-img {
-  height: 30vh;
+  min-height: 30vh;
   background-attachment: fixed !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
@@ -128,4 +128,10 @@
 textarea {
   resize: none;
   padding-right: 60px;
+}
+
+@media (max-height: 828px) {
+  .bg-img {
+    height: 40vh;
+  }
 }
