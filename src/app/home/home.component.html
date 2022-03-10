@@ -77,7 +77,7 @@
             <div class="px-xl-2 pb-xl-5 pt-xl-0 px-lg-0 pt-5">
               <img class="img-fluid cursorPointer" src="https://image.tmdb.org/t/p/w500{{anime.poster_path}}"
                 *ngIf="anime.poster_path" [routerLink]="['/anime', anime.id]" title='Voir la fiche de "{{anime.name}}"'>
-              <img class="img-fluid cursorPointer" src="/assets/img/noImage.jpg" *ngIf="!anime.poster_path"
+              <img class="img-fluid cursorPointer" src="/assets/img/noimage.png" *ngIf="!anime.poster_path"
                 [routerLink]="['/anime', anime.id]">
               <p class="mb-0 mt-1 fw-bold" title="{{anime.name}}">{{anime.original_name}}</p>
               <div class="d-flex justify-content-between">
