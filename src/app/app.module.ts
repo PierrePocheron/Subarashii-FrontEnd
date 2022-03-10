@@ -16,6 +16,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { DatePipe } from '@angular/common';
 import { AnimeComponent } from './anime/anime.component';
 import { AnimesListComponent } from './user/animes-list/animes-list.component';
+import { GravatarModule } from 'ngx-gravatar';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -45,6 +46,7 @@ export function tokenGetter() {
     }),
     ReactiveFormsModule,
     FormsModule,
+    GravatarModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
