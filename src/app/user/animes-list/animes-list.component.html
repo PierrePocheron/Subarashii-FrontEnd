@@ -12,7 +12,8 @@
             width="20" *ngIf="!basicList.includes(element.nom)">
           {{element.nom}}
           <img *ngIf="element.deletable == true" class="icon-main cursorPointer float-end delete-list"
-            src="../../../assets/img/SVG/close.svg" width="20" heigth="20">
+            src="../../../assets/img/SVG/close.svg" width="20" heigth="20" data-bs-toggle="modal"
+            data-bs-target="#validateModal" (click)="initializeModal(element.id)">
         </button>
         <button class="btn btn-main mt-4" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <img src="../../assets/img/SVG/add.svg" class="img-fluid icon-nav icon-white" height="20" width="20">
@@ -72,7 +73,25 @@
           </form>
         </div>
         <div class="text-center mt-5">
-          <button type="button" class="btn btn-main" (click)="addList()">Ajouter</button>
+          <button type="button" class="btn btn-main" (click)="addList()" data-bs-dismiss="modal">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="validateModal" tabindex="-1" aria-labelledby="validateModal" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-end">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="text-center mt-5">
+          {{messageModal}}
+          <button type="button" class="btn btn-main" (click)="deleteList()" data-bs-dismiss="modal">Valider</button>
+          <button type="button" class="btn btn-main" data-bs-dismiss="modal">Annuler</button>
         </div>
       </div>
     </div>

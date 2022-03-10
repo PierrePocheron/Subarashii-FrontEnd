@@ -16,7 +16,8 @@
           </button>
 
           <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdownMenuButton'+anime.idApi">
-            <li *ngFor="let list of userLists" (click)="addAnimeList(anime.idApi, list.id)"><a class="dropdown-item">{{
+            <li *ngFor="let list of userLists" (click)="addAnimeList(anime.idApi, list.id)"><a
+                class="dropdown-item cursorPointer">{{
                 list.nom }}</a></li>
           </ul>
         </div>
@@ -41,14 +42,15 @@
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="pills-episodes-tab" data-bs-toggle="pill" data-bs-target="#pills-episodes"
-          type="button" role="tab" aria-controls="pills-episodes" aria-selected="false" (click)="getEpisodesSaison()">
+          type="button" role="tab" aria-controls="pills-episodes" aria-selected="false" (click)="getEpisodesSaison()"
+          #episodesBtn>
           <img src="../../assets/img/SVG/episodes.svg" class="img-fluid icon-nav icon-main" height="20" width="20">
           Episodes
         </button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="pills-avis-tab" data-bs-toggle="pill" data-bs-target="#pills-avis" type="button"
-          role="tab" aria-controls="pills-avis" aria-selected="false" (click)="getComment()">
+          role="tab" aria-controls="pills-avis" aria-selected="false" (click)="getComment()" #commentsBtn>
           <img src="../../assets/img/SVG/avis.svg" class="img-fluid icon-nav icon-main" height="20" width="20">
           Avis
         </button>
@@ -136,7 +138,7 @@
         <div class="comments">
           <div class="comment mx-4 mb-5" *ngFor="let comment of comments">
             <div class="ms-3 mb-4 d-flex align-items-center">
-              <img ngxGravatar [email]="'2'" />
+              <img ngxGravatar [email]="comment.idUser" />
               <small class="fw-bold ms-2"
                 [ngClass]="{'color-main': comment.nomUser == username}">{{comment.nomUser}}</small>
             </div>

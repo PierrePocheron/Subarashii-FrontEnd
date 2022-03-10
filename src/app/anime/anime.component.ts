@@ -3,10 +3,8 @@ import { CommentService } from './../services/comment.service';
 import { ListService } from './../services/list.service';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { AnimeService } from './../services/anime.service';
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { first, firstValueFrom } from 'rxjs';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -15,15 +13,18 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./anime.component.css'],
 })
 export class AnimeComponent implements OnInit {
-  anime: any = {};
-  idAnime: any = 0;
+  public anime: any = {};
+  public idAnime: any = 0;
   public saisons: any[] = [];
   public episodesView: any[] = [];
   public userLists: any[] = [];
   public myAnimeIdSeeList: number[] = [];
-  comment = new FormControl('');
-  comments: any[] = [];
-  username: string = '';
+  public comment = new FormControl('');
+  public comments: any[] = [];
+  public username: string = '';
+  @ViewChild('episodesBtn') episodesBtn: ElementRef | undefined;
+  @ViewChild('commentsBtn') commentsBtn: ElementRef | undefined;
+
   constructor(
     private animeS: AnimeService,
     private listS: ListService,
@@ -37,12 +38,6 @@ export class AnimeComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationEnd) {
-        window.scrollTo(0, 0);
-      }
-      return;
-    });
     const data: any = await this.animeS.get(this.idAnime);
     this.anime = data.body;
     for (let index = 0; index < this.anime.nbSaison; index++) {
@@ -52,9 +47,22 @@ export class AnimeComponent implements OnInit {
       });
     }
     await this.getEpisodeViews();
-    this.episodesView = this.episodesView.map((el) => el.idApiEpisode);
+    this.episodesView = await this.episodesView.map((el) => el.idApiEpisode);
     await this.getMyList();
     this.myAnimeIdSeeList = await this.listS.myAnimeIdSeeList();
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        window.scrollTo(0, 0);
+      }
+    });
+    const url = await this.router.url;
+    const element = url.substring(url.indexOf('#') + 1);
+    if (element == 'episodes') {
+      this.episodesBtn?.nativeElement.click();
+    }
+    if (element == 'comments') {
+      this.commentsBtn?.nativeElement.click();
+    }
   }
 
   changeDate(date: Date): any {
@@ -97,7 +105,7 @@ export class AnimeComponent implements OnInit {
   }
 
   async addAnimeList(idAnime: number, idList: number) {
-    const data = await this.listS.addAnimeList(idAnime, idList);
+    await this.listS.addAnimeList(idAnime, idList);
     this.myAnimeIdSeeList.push(idAnime);
   }
 

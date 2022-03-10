@@ -1,3 +1,4 @@
+import { firstValueFrom } from 'rxjs';
 import { ListService } from './../../services/list.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -12,7 +13,10 @@ export class AnimesListComponent implements OnInit {
   public myList: any[] = [];
   public basicList: string[] = ['En cours', 'A voir', 'Terminé', 'En attente'];
   public animeList: any[] = [];
-  name = new FormControl('');
+  public name = new FormControl('');
+  public messageModal: string =
+    'Voulez-vous valider la suppression de cette liste ?';
+  public idListToDelete: number = 0;
   constructor(private listS: ListService, private datePipe: DatePipe) {}
 
   async ngOnInit() {
@@ -41,5 +45,19 @@ export class AnimesListComponent implements OnInit {
 
   changeDate(date: Date): any {
     return this.datePipe.transform(date, 'dd/MM/yyyy');
+  }
+
+  async initializeModal(idList: number) {
+    this.idListToDelete = idList;
+    await this.getAnimeList(idList);
+    if (this.animeList[idList].length !== 0) {
+      this.messageModal =
+        'Il existe des animés dans votre liste, ils vont êtres supprimé aussi. Voulez-vous valider la suppression de cette liste ?';
+    }
+  }
+
+  async deleteList() {
+    await this.listS.deleteList(this.idListToDelete);
+    await this.getMyList();
   }
 }

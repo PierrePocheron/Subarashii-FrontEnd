@@ -103,4 +103,17 @@ export class ListService {
       return this.responseS.ErrorF(error);
     }
   }
+
+  async deleteList(idList: number) {
+    try {
+      const $delete = this.http.delete(
+        environment.backUrl + 'userlists/' + idList
+      );
+      const res: any = await firstValueFrom($delete);
+      this.responseS.SuccessF(res);
+      return true;
+    } catch (error) {
+      return this.responseS.ErrorF(error);
+    }
+  }
 }
