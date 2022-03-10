@@ -1,8 +1,9 @@
 .bg-img {
-    background: linear-gradient(rgba(21,32,43,0.2), rgba(21,32,43,0.2)), url("../../../assets/img/bg-site.png");
-	height: 100vh;
-	background-attachment: fixed !important;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+  background: linear-gradient(rgba(21, 32, 43, 0.2), rgba(21, 32, 43, 0.2)),
+    url("../../../assets/img/bg-site.png");
+  height: 100vh;
+  background-attachment: fixed !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
