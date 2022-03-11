@@ -1,5 +1,5 @@
 .bg-img {
-  height: 30vh;
+  min-height: 30vh;
   background-attachment: fixed !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
@@ -101,6 +101,21 @@
   overflow-y: scroll;
 }
 
+.comments::-webkit-scrollbar {
+  width: 5px;
+}
+
+.comments::-webkit-scrollbar-thumb {
+  background-color: #d6d4d4;
+  border: 0;
+  border-radius: 0;
+}
+
+.comments::-webkit-scrollbar-thumb:hover {
+  background: var(--main-color);
+  border-color: var(--main-color);
+}
+
 .comment p::before {
   content: "";
   position: absolute;
@@ -128,4 +143,10 @@
 textarea {
   resize: none;
   padding-right: 60px;
+}
+
+@media (max-height: 828px) {
+  .bg-img {
+    height: 40vh;
+  }
 }

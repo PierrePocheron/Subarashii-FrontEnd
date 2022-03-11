@@ -25,7 +25,7 @@
           [attr.id]="'v-pills-' + element.id" role="tabpanel" aria-labelledby="v-pills-1-tab"
           *ngFor="let element of myList">
           <div class="row">
-            <div class="col-lg-4 col-sm-6" *ngFor="let anime of animeList[element.id]">
+            <div class="col-lg-4 col-sm-6 hover-card" *ngFor="let anime of animeList[element.id]">
               <div class="pb-5">
                 <img class="img-fluid cursorPointer" [src]="anime.image"
                   [title]='"Voir la fiche de \"" + anime.nomTraduit +"\""  ' [routerLink]="['/anime', anime.idApi]">
@@ -84,14 +84,15 @@
   data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Suppression d'une liste</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
       <div class="modal-body">
-        <div class="text-end">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+        <p>{{messageModal}}</p>
         <div class="text-center mt-5">
-          {{messageModal}}
-          <button type="button" class="btn btn-main" (click)="deleteList()" data-bs-dismiss="modal">Valider</button>
-          <button type="button" class="btn btn-main" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-main" (click)="deleteList()">Valider</button>
+          <button type="button" class="btn btn-secondary rounded-0 ms-2" data-bs-dismiss="modal">Annuler</button>
         </div>
       </div>
     </div>
