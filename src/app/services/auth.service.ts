@@ -1,3 +1,4 @@
+import { ResponseService } from './response.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -9,15 +10,24 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
+  constructor(
+    private http: HttpClient,
+    private jwtHelper: JwtHelperService,
+    private responseS: ResponseService
+  ) {}
 
   async login(data: any): Promise<boolean> {
-    const request = this.http.post(environment.backUrl + 'users/sign-in', data);
     try {
+      const request = this.http.post(
+        environment.backUrl + 'users/sign-in',
+        data
+      );
       const dataRequest: any = await firstValueFrom(request);
       localStorage.setItem('token', dataRequest.body.token);
+      this.responseS.SuccessF(dataRequest);
       return true;
-    } catch (error) {
+    } catch (error: any) {
+      this.responseS.ErrorF(error.error);
       return false;
     }
   }
@@ -27,9 +37,11 @@ export class AuthService {
     headers = headers.set('Content-Type', 'application/json');
     const request = this.http.post(environment.backUrl + 'users/sign-up', data);
     try {
-      await firstValueFrom(request);
+      const res = await firstValueFrom(request);
+      this.responseS.SuccessF(res);
       return true;
-    } catch (error) {
+    } catch (error: any) {
+      this.responseS.ErrorF(error.error);
       return false;
     }
   }
