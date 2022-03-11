@@ -1,9 +1,9 @@
+import { firstValueFrom } from 'rxjs';
 import { ToastService } from './../../services/toast.service';
 import { Component, OnInit } from '@angular/core';
 import { toastInfo } from 'src/app/toast';
 
 declare var bootstrap: any;
-declare var $: any;
 @Component({
   selector: 'app-toasts',
   templateUrl: './toasts.component.html',
@@ -33,8 +33,11 @@ export class ToastsComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    var myToastEl = document.getElementById('toast');
+  ngOnInit() {
+    var myToastEl: any = document.getElementById('toast');
     this.myToast = bootstrap.Toast.getOrCreateInstance(myToastEl);
+
+    this.myToast.show();
+    this.myToast.hide();
   }
 }

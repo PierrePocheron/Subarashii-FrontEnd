@@ -7,15 +7,17 @@ import { BehaviorSubject } from 'rxjs';
 export class ToastService {
   toastStatut = new BehaviorSubject<any>(undefined);
 
-  activeToast(toastInfo: any) {
+  timeout(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+  async activeToast(toastInfo: any) {
+    const toast: any = document.getElementById('toast');
+    toast.parentNode.style.zIndex = '99';
     if (this.toastStatut.getValue() == true) {
       return;
     }
-
     this.toastStatut.next(toastInfo);
-
-    setTimeout(() => {
-      this.toastStatut.next(undefined);
-    }, 3000);
+    await this.timeout(6000);
+    toast.parentNode.style.zIndex = '-1';
   }
 }
