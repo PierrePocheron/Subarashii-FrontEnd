@@ -10,7 +10,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   search: string = '';
-  constructor(private router: Router, private route: ActivatedRoute, private authS: AuthService) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private authS: AuthService
+  ) {
     this.route.queryParams.subscribe((params) => {
       this.search = params['search'];
     });

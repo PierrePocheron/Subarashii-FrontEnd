@@ -2,7 +2,12 @@ import { ListService } from './../services/list.service';
 import { Component, OnInit } from '@angular/core';
 import { AnimeService } from '../services/anime.service';
 import { DatePipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterEvent,
+} from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -32,10 +37,15 @@ export class HomeComponent implements OnInit {
     private apiA: AnimeService,
     private datePipe: DatePipe,
     private route: ActivatedRoute,
-    private listS: ListService
+    private listS: ListService,
+    private router: Router
   ) {}
 
   async ngOnInit(): Promise<any> {
+    await this.initData();
+  }
+
+  async initData() {
     const params = await firstValueFrom(this.route.queryParams);
     const { search } = params;
     await this.getMyList();
@@ -51,7 +61,6 @@ export class HomeComponent implements OnInit {
     this.myAnimeIdSeeList = await this.listS.myAnimeIdSeeList();
     await this.getAllAnime(this.mergeObject());
   }
-
   async getAllAnime(data: object = {}) {
     this.loading = true;
     if (this.totalPage >= this.page) {

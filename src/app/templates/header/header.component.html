@@ -25,12 +25,11 @@
         </li>
         <hr class="bg-main my-2">
       </ul>
-      <form class="d-flex">
-        <div class="search-input d-flex position-relative w-100">
-          <img src="../../../assets/img/SVG/search.svg">
-          <input type="text" class="form-control form-input m-0">
-        </div>
-      </form>
+      <div class="search-input d-flex position-relative w-100">
+        <img src="../../../assets/img/SVG/search.svg">
+        <input type="text" class="form-control form-input m-0" (keyup.enter)="onEnter()" id="search"
+          [(ngModel)]="search">
+      </div>
     </div>
   </div>
 </nav>
