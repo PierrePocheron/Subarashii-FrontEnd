@@ -7,14 +7,30 @@
         <p>{{anime.nomTraduit}}</p>
       </div>
       <div class="col-12 text-center">
-        <img class="img-fluid icon-white me-2" src="../../assets/img/SVG/add.svg" width="30" height="30">
-        <img class="img-fluid icon-red ms-2" src="../../assets/img/SVG/heart.svg" width="30" height="30">
+
+
+        <div class="dropdown" *ngIf="!myAnimeIdSeeList.includes(anime.idApi)">
+          <button class="border-0 bg-transparent p-0" [attr.id]="'dropdownMenuButton'+anime.idApi"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="img-fluid icon-white me-2 hover-zoom" src="../../assets/img/SVG/add.svg" width="30" height="30">
+          </button>
+
+          <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdownMenuButton'+anime.idApi">
+            <li *ngFor="let list of userLists" (click)="addAnimeList(anime.idApi, list.id)"><a
+                class="dropdown-item cursorPointer">{{
+                list.nom }}</a></li>
+          </ul>
+        </div>
+
+        <div class="border-0 bg-transparent p-0" *ngIf="myAnimeIdSeeList.includes(anime.idApi)">
+          <img class="img-fluid" src="../../assets/img/SVG/added.svg" height="30" width="30">
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="my-5">
+<section class="my-5 sectionDetail">
   <div class="container">
     <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
       <li class="nav-item" role="presentation">
@@ -26,14 +42,15 @@
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="pills-episodes-tab" data-bs-toggle="pill" data-bs-target="#pills-episodes"
-          type="button" role="tab" aria-controls="pills-episodes" aria-selected="false">
+          type="button" role="tab" aria-controls="pills-episodes" aria-selected="false" (click)="getEpisodesSaison()"
+          #episodesBtn>
           <img src="../../assets/img/SVG/episodes.svg" class="img-fluid icon-nav icon-main" height="20" width="20">
           Episodes
         </button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="pills-avis-tab" data-bs-toggle="pill" data-bs-target="#pills-avis" type="button"
-          role="tab" aria-controls="pills-avis" aria-selected="false">
+          role="tab" aria-controls="pills-avis" aria-selected="false" (click)="getComment()" #commentsBtn>
           <img src="../../assets/img/SVG/avis.svg" class="img-fluid icon-nav icon-main" height="20" width="20">
           Avis
         </button>
@@ -81,191 +98,67 @@
       <div class="tab-pane fade" id="pills-episodes" role="tabpanel" aria-labelledby="pills-episodes-tab">
 
         <div class="accordion accordion-flush" id="accordionFlushExample">
-          <div class="accordion-item border-0">
-            <h2 class="accordion-header" id="flush-headingOne">
-              <button class="accordion-button my-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                Saison 1
+          <div class="accordion-item border-0" *ngFor="let saison of saisons">
+            <h2 class="accordion-header" [attr.id]="'flush-heading' + saison.nbSaison">
+              <button class="accordion-button my-2 collapsed" type="button" data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#flush-' + saison.nbSaison" [attr.aria-controls]="'flush-' + saison.nbSaison"
+                (click)="getEpisodesSaison(saison.nbSaison)" [attr.aria-expanded]="saison.nbSaison == 1 ? false: true ">
+                Saison {{saison.nbSaison}}
                 <div class="w-85 ms-auto text-end">
-                  <input class="saison-input d-none" id="s1" type="checkbox" name="saisons"/>
-                  <label class="saison-label" for="s1"><img src="../../assets/img/SVG/nonvue.svg" width="20" height="20"></label>
+                  <input class="saison-input d-none" id="s1" type="checkbox" name="saisons" />
+                  <label class="saison-label" for="s1"><img src="../../assets/img/SVG/notseen.svg" width="20"
+                      height="20"></label>
                 </div>
               </button>
             </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div id="flush-{{saison.nbSaison}}" class="accordion-collapse collapse"
+              [attr.labelledby]="'flush-heading' + saison.nbSaison" data-bs-parent="#accordionFlushExample">
               <div class="accordion-body p-0">
                 <div class="row">
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s1e1" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s1e1">
-                      Episode 1
-                      <img src="../../assets/img/SVG/nonvue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s1e2" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s1e2">
-                      Episode 2
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s1e3" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s1e3">
-                      Episode 3
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s1e4" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s1e4">
-                      Episode 4
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s1e5" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s1e5">
-                      Episode 5
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s1e6" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s1e6">
-                      Episode 6
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                </div>  
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item border-0">
-            <h2 class="accordion-header" id="flush-headingTwo">
-              <button class="accordion-button my-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                Saison 2
-                <div class="w-85 ms-auto text-end">
-                  <input class="saison-input d-none" id="s2" type="checkbox" name="saisons"/>
-                  <label class="saison-label" for="s2"><img src="../../assets/img/SVG/nonvue.svg" width="20" height="20"></label>
-                </div>
-              </button>
-            </h2>
-            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body p-0">
+                  <div class="col-12 mb-1 noselect position-relative" *ngFor="let episode of saison.episodes">
+                    <input class="episode-input" [attr.id]="episode.idApi" type="checkbox" name="episodes"
+                      [checked]="episodesView.includes(episode.idApi)" />
+                    <label class="episode-label px-5 py-3" [attr.for]="episode.idApi"
+                      (click)="changeStateViewEpisode($event, episode.idApi)">
+                      Episode {{episode.numeroEpisode}} : {{episode.nom}}
+                      <img *ngIf="episodesView.includes(episode.idApi)" src="../../assets/img/SVG/see.svg" width="20"
+                        height="20">
+                      <img *ngIf="!episodesView.includes(episode.idApi)" src="../../assets/img/SVG/notseen.svg"
+                        width="20" height="20">
 
-                <div class="row">
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s2e1" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s2e1">
-                      Episode 1
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s2e2" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s2e2">
-                      Episode 2
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s2e3" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s2e3">
-                      Episode 3
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s2e4" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s2e4">
-                      Episode 4
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s2e5" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s2e5">
-                      Episode 5
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s2e6" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s2e6">
-                      Episode 6
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
                     </label>
                   </div>
                 </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item border-0">
-            <h2 class="accordion-header" id="flush-headingThree">
-              <button class="accordion-button my-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                Saison 3
-                <div class="w-85 ms-auto text-end">
-                  <input class="saison-input d-none" id="s3" type="checkbox" name="saisons"/>
-                  <label class="saison-label" for="s3"><img src="../../assets/img/SVG/nonvue.svg" width="20" height="20"></label>
-                </div>
-              </button>
-            </h2>
-            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body p-0">
-
-                <div class="row">
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s3e1" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s3e1">
-                      Episode 1
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s3e2" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s3e2">
-                      Episode 2
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s3e3" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s3e3">
-                      Episode 3
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s3e4" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s3e4">
-                      Episode 4
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s3e5" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s3e5">
-                      Episode 5
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                  <div class="col-12 mb-1 noselect position-relative">
-                    <input class="episode-input" id="s3e6" type="checkbox" name="episodes"/>
-                    <label class="episode-label px-5 py-3" for="s3e6">
-                      Episode 6
-                      <img src="../../assets/img/SVG/vue.svg" width="20" height="20">
-                    </label>
-                  </div>
-                </div>
-
               </div>
             </div>
           </div>
         </div>
-        
       </div>
-      <div class="tab-pane fade" id="pills-avis" role="tabpanel" aria-labelledby="pills-avis-tab">Avis</div>
+      <div class="tab-pane fade" id="pills-avis" role="tabpanel" aria-labelledby="pills-avis-tab">
+        <div class="comments">
+          <div class="comment mx-4 mb-5" *ngFor="let comment of comments">
+            <div class="ms-3 mb-4 d-flex align-items-center">
+              <img ngxGravatar [email]="comment.idUser" />
+              <small class="fw-bold ms-2"
+                [ngClass]="{'color-main': comment.nomUser == username}">{{comment.nomUser}}</small>
+            </div>
+            <p>{{comment.contenu}}</p>
+          </div>
+        </div>
+        <div class="new-comment mx-4 my-5 position-relative">
+          <div>
+            <form>
+              <label for="exampleFormControlTextarea1" class="form-label">Laisse ton commentaire</label>
+              <textarea [formControl]="comment" class="form-control overflow-hidden" id="exampleFormControlTextarea1"
+                rows="2"></textarea>
+            </form>
+          </div>
+          <button class="border-0 bg-transparent p-0 position-absolute btn-send" (click)="addComment()">
+            <img class="icon-main" src="../../assets/img/SVG/send.svg" width="20" height="20">
+          </button>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>

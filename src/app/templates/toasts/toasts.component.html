@@ -1,0 +1,23 @@
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 99">
+  <!-- Toast Information -->
+
+  <div id="toast" data-bs-delay="5000" data-bs-autohide="true"
+    class="toast d-flex align-items-center justify-content-between p-3 round-5 w-auto" role="alert"
+    aria-live="assertive" aria-atomic="true">
+    <ng-container *ngIf="_toastInf">
+      <div class="left-{{_toastInf.type.color}}-line p-3">
+        <img [ngClass]="'icon-' + _toastInf.type.color" src="../../assets/img/SVG/toasts/{{_toastInf.type.image}}"
+          height="30px" width="30px" />
+      </div>
+      <div>
+        <h3 class="f-bold mb-1">{{ _toastInf.type.text }}</h3>
+        <p class="mb-0">{{_toastInf.message}}</p>
+      </div>
+      <div>
+        <button type="button" class="btn-custom" data-bs-dismiss="toast" aria-label="Close"><img
+            [ngClass]="'icon-' +_toastInf.type.color" src="../../assets/img/SVG/toasts/close.svg" height="20px"
+            width="20px" /></button>
+      </div>
+    </ng-container>
+  </div>
+</div>

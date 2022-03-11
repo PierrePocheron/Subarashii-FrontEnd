@@ -1,0 +1,101 @@
+<section>
+  <div class="container my-5">
+    <div class="row align-items-start">
+      <div class="col-md-3 nav flex-column nav-pills mb-4 mb-md-0" id="v-pills-tab" role="tablist"
+        aria-orientation="vertical">
+        <button *ngFor="let element of myList" [ngClass]="{active: element.nom == 'A voir'}" class="nav-link noselect"
+          id="v-pills-1-tab" data-bs-toggle="pill" [attr.data-bs-target]="'#v-pills-' + element.id" type="button"
+          role="tab" aria-controls="v-pills-1" aria-selected="true" (click)="getAnimeList(element.id)">
+          <img [attr.src]="'../../assets/img/SVG/userlists/'+ element.nom + '.svg'" class="img-fluid icon-nav icon-main"
+            height="20" width="20" *ngIf="basicList.includes(element.nom)">
+          <img [attr.src]="'../../assets/img/SVG/userlists/custom.svg'" class="img-fluid icon-nav icon-main" height="20"
+            width="20" *ngIf="!basicList.includes(element.nom)">
+          {{element.nom}}
+          <img *ngIf="element.deletable == true" class="icon-main cursorPointer float-end delete-list"
+            src="../../../assets/img/SVG/close.svg" width="20" heigth="20" data-bs-toggle="modal"
+            data-bs-target="#validateModal" (click)="initializeModal(element.id)">
+        </button>
+        <button class="btn btn-main mt-4" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <img src="../../assets/img/SVG/add.svg" class="img-fluid icon-nav icon-white" height="20" width="20">
+          Ajouter une liste personnalisée
+        </button>
+      </div>
+      <div class="col-md-9 tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show" [ngClass]="{active: element.nom == 'A voir'}"
+          [attr.id]="'v-pills-' + element.id" role="tabpanel" aria-labelledby="v-pills-1-tab"
+          *ngFor="let element of myList">
+          <div class="row">
+            <div class="col-lg-4 col-sm-6 hover-card" *ngFor="let anime of animeList[element.id]">
+              <div class="pb-5">
+                <img class="img-fluid cursorPointer" [src]="anime.image"
+                  [title]='"Voir la fiche de \"" + anime.nomTraduit +"\""  ' [routerLink]="['/anime', anime.idApi]">
+                <p class="mb-0 mt-1 fw-bold" [title]="anime.nomTraduit">{{anime.originalName}}</p>
+                <div class="d-flex justify-content-between">
+                  <small>{{changeDate(anime.dateCommencement)}}</small>
+                  <button class="border-0 bg-transparent p-0">
+                    <img class="img-fluid icon-main" src="../../assets/img/SVG/remove.svg" height="20" width="20"
+                      (click)="deleteAnimeList(anime.idApi)">
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+          <div class="row">
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+          <div class="row">
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+          <div class="row">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-end">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="form-group mt-4">
+          <form>
+            <label for="user-list">Nom de la liste</label>
+            <input type="text" [formControl]="name" class="form-control" id="user-list" aria-describedby="user-list"
+              required>
+          </form>
+        </div>
+        <div class="text-center mt-5">
+          <button type="button" class="btn btn-main" (click)="addList()" data-bs-dismiss="modal">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="validateModal" tabindex="-1" aria-labelledby="validateModal" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Suppression d'une liste</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{messageModal}}</p>
+        <div class="text-center mt-5">
+          <button type="button" class="btn btn-main" (click)="deleteList()">Valider</button>
+          <button type="button" class="btn btn-secondary rounded-0 ms-2" data-bs-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
