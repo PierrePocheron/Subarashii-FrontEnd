@@ -52,7 +52,7 @@ export class AnimesListComponent implements OnInit {
     await this.getAnimeList(idList);
     if (this.animeList[idList].length !== 0) {
       this.messageModal =
-        'Il existe des animés dans votre liste, ils vont êtres supprimé aussi. Voulez-vous valider la suppression de cette liste ?';
+        'Êtes vous sûr de vouloir supprimer cette liste ? Les animés présents dans votre liste seront également supprimés de celle-ci.';
     }
   }
 

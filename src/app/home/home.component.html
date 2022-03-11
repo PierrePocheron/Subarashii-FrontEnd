@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 my-5 d-flex flex-wrap" *ngIf="!isSearch">
-        <div class="form-group me-2 mb-2 noselect" *ngFor="let genre of genres">
+        <div class="form-group me-2 mb-2 noselect hover-card" *ngFor="let genre of genres">
           <input class="genres-input" id="{{genre.idApi}}" type="checkbox" name="genres" />
           <label class="genres-label px-5 py-3" for="{{genre.idApi}}" (click)="filterGender($event)">
             <img class="img-fluid" src="../../assets/img/SVG/genres/{{genre.id}}.svg" width="25" height="25">
@@ -73,7 +73,7 @@
           (scrolled)="onScroll()">
           <p *ngIf="!animes.length && !loading">Pas d'animés trouvés</p>
           <p *ngIf="!animes.length && loading">Loading</p>
-          <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let anime of animes">
+          <div class="col-lg-3 col-md-4 col-sm-6 hover-card" *ngFor="let anime of animes">
             <div class="px-xl-2 pb-xl-5 pt-xl-0 px-lg-0 pt-5">
               <img class="img-fluid cursorPointer" src="https://image.tmdb.org/t/p/w500{{anime.poster_path}}"
                 *ngIf="anime.poster_path" [routerLink]="['/anime', anime.id]" title='Voir la fiche de "{{anime.name}}"'>

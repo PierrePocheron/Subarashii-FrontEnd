@@ -101,6 +101,21 @@
   overflow-y: scroll;
 }
 
+.comments::-webkit-scrollbar {
+  width: 5px;
+}
+
+.comments::-webkit-scrollbar-thumb {
+  background-color: #d6d4d4;
+  border: 0;
+  border-radius: 0;
+}
+
+.comments::-webkit-scrollbar-thumb:hover {
+  background: var(--main-color);
+  border-color: var(--main-color);
+}
+
 .comment p::before {
   content: "";
   position: absolute;
