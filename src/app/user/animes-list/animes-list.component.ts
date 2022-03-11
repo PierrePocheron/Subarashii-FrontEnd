@@ -17,6 +17,8 @@ export class AnimesListComponent implements OnInit {
   public messageModal: string =
     'Voulez-vous valider la suppression de cette liste ?';
   public idListToDelete: number = 0;
+  public idListSelected = 0;
+  public idList = 0;
   constructor(private listS: ListService, private datePipe: DatePipe) {}
 
   async ngOnInit() {
@@ -24,6 +26,7 @@ export class AnimesListComponent implements OnInit {
     const idAvoir: any = this.myList.filter((el) => el.nom == 'A voir');
 
     await this.getAnimeList(idAvoir[0].id);
+    this.initializeIdList(idAvoir[0].id);
   }
 
   async getMyList() {
@@ -38,6 +41,7 @@ export class AnimesListComponent implements OnInit {
   }
 
   async getAnimeList(idList: number) {
+    this.idList = idList;
     if (!this.animeList[idList]) {
       this.animeList[idList] = await this.listS.getAnimeList(idList);
     }
@@ -56,8 +60,18 @@ export class AnimesListComponent implements OnInit {
     }
   }
 
+  initializeIdList(idList: number) {
+    this.idList = idList;
+  }
   async deleteList() {
     await this.listS.deleteList(this.idListToDelete);
     await this.getMyList();
+  }
+
+  async deleteAnimeList(idAnime: number) {
+    await this.listS.deleteAnimeList(idAnime, this.idList);
+    this.animeList[this.idList] = this.animeList[this.idList].filter(
+      (el: any) => el.idApi != idAnime
+    );
   }
 }
