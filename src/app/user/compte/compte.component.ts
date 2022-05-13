@@ -18,6 +18,8 @@ export class CompteComponent implements OnInit {
     password: new FormControl(''),
   });
   isError: boolean;
+  username : string;
+  email: string;
 
   constructor(private userService: UserService,
     ) {
@@ -25,11 +27,14 @@ export class CompteComponent implements OnInit {
     this.isOpenInputName = false;
     this.isOpenInputPassword = false;
     this.isError = false;
+    this.username = '';
+    this.email = '';
   }
 
   async ngOnInit() {
     const dataUser: any = await this.userService.getUser();
-    console.log(dataUser.body[0])
+    this.email = dataUser.body.email;
+    this.username = dataUser.body.username;
   }
 
   openInputName(): void {
@@ -40,7 +45,11 @@ export class CompteComponent implements OnInit {
   }
 
   submit(): void {
-    if(this.updateForm.get('password')?.value.length < 5) {
+    if(this.updateForm.get('username')?.value != '') {
+      this.username = this.updateForm.get('username')?.value
+      this.isOpenInputName = false;
+    }
+    if(this.updateForm.get('password')?.value.length < 5 && this.updateForm.get('password')?.value != '') {
       this.isError = true;
     }
     else {

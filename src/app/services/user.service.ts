@@ -10,7 +10,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   async getUser() {
-    const get$ = this.http.get(environment.backUrl + 'genres/all');
+    const get$ = this.http.get(environment.backUrl + 'users/current');
     const data: any = await firstValueFrom(get$);
     return data;
   }
