@@ -1,0 +1,35 @@
+<section class="bg-img d-flex align-items-center compte flex-column">
+  <h1 class="compte-title d-flex align-items-center"> <img src="../../../assets/img/SVG/compte.svg" alt="image titre mon compte " class="compte-image-titre"/> Mon compte</h1>
+  <div class="container mt-5 compte-block">
+    <div class="row justify-content-center">
+      <div class="responsive-size col-lg-6 bg-white p-5">
+        <form (ngSubmit)="submit()" [formGroup]="updateForm">
+          <div>Email : Test</div>
+          <div class="d-flex align-items-center mt-2 ">
+            <div *ngIf="!isOpenInputName">
+              <img (click)="openInputName()" src="../../../assets/img/update-user.png" class="compte-image">
+            </div>
+            <div class="compte-label"> Username </div>
+            <div *ngIf="!isOpenInputName"> : Test </div>
+            <div *ngIf="isOpenInputName">
+              <input type="text" class="form-control" id="username" formControlName="username">
+            </div>
+          </div>
+          <div class="d-flex align-items-center mt-2">
+            <div *ngIf="!isOpenInputPassword">
+              <img (click)="openInputPassword()" src="../../../assets/img/update-user.png" class="compte-image">
+            </div>
+            <span class="compte-label"> Password</span>
+            <div *ngIf="isOpenInputPassword">
+              <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+          </div>
+          <div *ngIf="isError" class="compte-error">
+            Le mot de passe doit faire minimum 5 caractères
+          </div>
+          <button type="submit" class="btn btn-main mt-5">Modification</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

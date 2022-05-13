@@ -10,6 +10,11 @@
       <ul class="navbar-nav me-auto my-2 mb-lg-0">
         <hr class="bg-main my-2">
         <li class="d-flex align-items-center mb-1">
+          <img src="../../../assets/img/SVG/compte.svg" width="20" alt="">
+          <a class="item-nav mx-2" [routerLink]="['/compte']">Mon Compte</a>
+        </li>
+        <hr class="bg-main my-2">
+        <li class="d-flex align-items-center mb-1">
           <img src="../../../assets/img/SVG/eye.svg" width="20" alt="">
           <a class="item-nav mx-2" routerLink="/">Découvrir</a>
         </li>
@@ -56,6 +61,7 @@
             <img src="../../../assets/img/SVG/profile.svg" width="40" height="40" alt="">
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" [routerLink]="['/compte']">Mon compte</a></li>
             <li><a class="dropdown-item" (click)="logout()">Déconnexion</a></li>
           </ul>
         </div>
