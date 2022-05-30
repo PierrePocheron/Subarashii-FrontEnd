@@ -7,7 +7,7 @@
     <ng-container *ngIf="_toastInf">
       <div class="left-{{_toastInf.type.color}}-line p-3">
         <img [ngClass]="'icon-' + _toastInf.type.color" src="../../assets/img/SVG/toasts/{{_toastInf.type.image}}"
-          height="30px" width="30px" />
+          height="30px" width="30px" alt="" />
       </div>
       <div>
         <h3 class="f-bold mb-1">{{ _toastInf.type.text }}</h3>
@@ -16,7 +16,7 @@
       <div>
         <button type="button" class="btn-custom" data-bs-dismiss="toast" aria-label="Close"><img
             [ngClass]="'icon-' +_toastInf.type.color" src="../../assets/img/SVG/toasts/close.svg" height="20px"
-            width="20px" /></button>
+            width="20px" alt=""/></button>
       </div>
     </ng-container>
   </div>
