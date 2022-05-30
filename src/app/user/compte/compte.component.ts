@@ -48,12 +48,15 @@ export class CompteComponent implements OnInit {
     if(this.updateForm.get('username')?.value != '') {
       this.username = this.updateForm.get('username')?.value
       this.isOpenInputName = false;
+      this.userService.postUserUsername(this.updateForm.get('username')!.value)
     }
     if(this.updateForm.get('password')?.value.length < 5 && this.updateForm.get('password')?.value != '') {
       this.isError = true;
     }
     else {
       this.isError = false;
+      this.isOpenInputPassword = false;
+      this.userService.postUserPassword(this.updateForm.get('password')!.value)
     }
   }
 }
