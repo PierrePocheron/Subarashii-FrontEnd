@@ -17,24 +17,29 @@ export class CompteComponent implements OnInit {
     username: new FormControl(''),
     password: new FormControl(''),
   });
-  isError: boolean;
+  isErrorPassword: boolean;
+  isErrorUsername: boolean;
   username : string;
   email: string;
+  password: string;
 
   constructor(private userService: UserService,
     ) {
 
     this.isOpenInputName = false;
     this.isOpenInputPassword = false;
-    this.isError = false;
+    this.isErrorPassword = false;
+    this.isErrorUsername = false;
     this.username = '';
     this.email = '';
+    this.password = '';
   }
 
   async ngOnInit() {
     const dataUser: any = await this.userService.getUser();
     this.email = dataUser.body.email;
     this.username = dataUser.body.username;
+    this.password = dataUser.body.password;
   }
 
   openInputName(): void {
@@ -44,19 +49,27 @@ export class CompteComponent implements OnInit {
     this.isOpenInputPassword = true;
   }
 
-  submit(): void {
+  submitUsername(): void {
     if(this.updateForm.get('username')?.value != '') {
-      this.username = this.updateForm.get('username')?.value
+      this.username = this.updateForm.get('username')?.value;
       this.isOpenInputName = false;
-      this.userService.postUserUsername(this.updateForm.get('username')!.value)
-    }
-    if(this.updateForm.get('password')?.value.length < 5 && this.updateForm.get('password')?.value != '') {
-      this.isError = true;
+      this.isErrorUsername = false;
+      this.userService.postUserUsername(this.username);
     }
     else {
-      this.isError = false;
+      this.isErrorUsername = true
+    }
+  }
+
+  submitPassword(): void {
+    if(this.updateForm.get('password')?.value.length < 5 && this.updateForm.get('password')?.value != '') {
+      this.isErrorPassword = true;
+    }
+    else {
+      this.password = this.updateForm.get('password')?.value;
+      this.isErrorPassword = false;
       this.isOpenInputPassword = false;
-      this.userService.postUserPassword(this.updateForm.get('password')!.value)
+      this.userService.postUserPassword(this.password);
     }
   }
 }
