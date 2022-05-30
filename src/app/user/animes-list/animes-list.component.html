@@ -7,16 +7,16 @@
           id="v-pills-1-tab" data-bs-toggle="pill" [attr.data-bs-target]="'#v-pills-' + element.id" type="button"
           role="tab" aria-controls="v-pills-1" aria-selected="true" (click)="getAnimeList(element.id)">
           <img [attr.src]="'../../assets/img/SVG/userlists/'+ element.nom + '.svg'" class="img-fluid icon-nav icon-main"
-            height="20" width="20" *ngIf="basicList.includes(element.nom)">
+            height="20" width="20" *ngIf="basicList.includes(element.nom)" alt="">
           <img [attr.src]="'../../assets/img/SVG/userlists/custom.svg'" class="img-fluid icon-nav icon-main" height="20"
-            width="20" *ngIf="!basicList.includes(element.nom)">
+            width="20" *ngIf="!basicList.includes(element.nom)" alt="">
           {{element.nom}}
           <img *ngIf="element.deletable == true" class="icon-main cursorPointer float-end delete-list"
             src="../../../assets/img/SVG/close.svg" width="20" heigth="20" data-bs-toggle="modal"
-            data-bs-target="#validateModal" (click)="initializeModal(element.id)">
+            data-bs-target="#validateModal" (click)="initializeModal(element.id)" alt="">
         </button>
         <button class="btn btn-main mt-4" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <img src="../../assets/img/SVG/add.svg" class="img-fluid icon-nav icon-white" height="20" width="20">
+          <img src="../../assets/img/SVG/add.svg" class="img-fluid icon-nav icon-white" height="20" width="20" alt="">
           Ajouter une liste personnalisée
         </button>
       </div>
@@ -28,13 +28,13 @@
             <div class="col-lg-4 col-sm-6 hover-card" *ngFor="let anime of animeList[element.id]">
               <div class="pb-5">
                 <img class="img-fluid cursorPointer" [src]="anime.image"
-                  [title]='"Voir la fiche de \"" + anime.nomTraduit +"\""  ' [routerLink]="['/anime', anime.idApi]">
+                  [title]='"Voir la fiche de \"" + anime.nomTraduit +"\""  ' [routerLink]="['/anime', anime.idApi]" alt="">
                 <p class="mb-0 mt-1 fw-bold" [title]="anime.nomTraduit">{{anime.originalName}}</p>
                 <div class="d-flex justify-content-between">
                   <small>{{changeDate(anime.dateCommencement)}}</small>
                   <button class="border-0 bg-transparent p-0">
                     <img class="img-fluid icon-main" src="../../assets/img/SVG/remove.svg" height="20" width="20"
-                      (click)="deleteAnimeList(anime.idApi)">
+                      (click)="deleteAnimeList(anime.idApi)" alt="">
                   </button>
                 </div>
               </div>
