@@ -41,7 +41,7 @@ export class AdminDashboardComponent implements OnInit {
     const nbCategories: any = await this.animeService.getCategories();
     this.nbCategories = nbCategories.body;
     const ctx = document.getElementById('myChart') as ChartItem;
-    const myChart = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'doughnut',
       data: {
         labels: ['User', 'Admin'],

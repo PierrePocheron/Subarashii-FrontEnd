@@ -18,8 +18,8 @@ export class CommentairesComponent implements OnInit {
     const comments = this.animesCommentsService.getComments();
     comments.then((comment) => {
       this.arrayComments = comment.body;
-      for (let i = 0; i < this.arrayComments.length; i++) {
-        this.arrayComments[i].date = this.arrayComments[i].date.substring(0, this.arrayComments[i].date.length - 9);
+      for (let comment of this.arrayComments) {
+       comment.date = comment.date.substring(0, comment.date.length - 9);
       }
     })
   }
