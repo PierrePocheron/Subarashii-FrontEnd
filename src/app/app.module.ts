@@ -18,6 +18,7 @@ import { AnimeComponent } from './anime/anime.component';
 import { AnimesListComponent } from './user/animes-list/animes-list.component';
 import { GravatarModule } from 'ngx-gravatar';
 import { ToastsComponent } from './templates/toasts/toasts.component';
+import { CompteComponent } from './user/compte/compte.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -35,6 +36,7 @@ export function tokenGetter() {
     AnimeComponent,
     AnimesListComponent,
     ToastsComponent,
+    CompteComponent,
   ],
   imports: [
     BrowserModule,
