@@ -20,6 +20,7 @@ import { GravatarModule } from 'ngx-gravatar';
 import { ToastsComponent } from './templates/toasts/toasts.component';
 import { CompteComponent } from './user/compte/compte.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { CommentairesComponent } from './admin-dashboard/commentaires/commentaires.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -39,6 +40,7 @@ export function tokenGetter() {
     ToastsComponent,
     CompteComponent,
     AdminDashboardComponent,
+    CommentairesComponent,
   ],
   imports: [
     BrowserModule,

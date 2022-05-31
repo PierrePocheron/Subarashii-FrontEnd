@@ -8,6 +8,7 @@ import { AnimeComponent } from './anime/anime.component';
 import { AnimesListComponent } from './user/animes-list/animes-list.component';
 import { CompteComponent } from './user/compte/compte.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { CommentairesComponent } from './admin-dashboard/commentaires/commentaires.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'animes-list', component: AnimesListComponent, canActivate: [AuthGuard] },
   { path : 'compte', component: CompteComponent, canActivate: [AuthGuard]},
   { path : 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard]},
+  { path : 'commentaires', component: CommentairesComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' },
 ];
 

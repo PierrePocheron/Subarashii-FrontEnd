@@ -1,0 +1,23 @@
+<div class="bg-img d-flex align-items-center flex-column commentaire">
+  <div class="container">
+    <ul>
+      <li class="table-header">
+        <div class="col col-1">Date</div>
+        <div class="col col-2">Animé</div>
+        <div class="col col-3">Utilisateur</div>
+        <div class="col col-4">Commentaire</div>
+        <div class="col col-5"></div>
+      </li>
+      <div *ngFor="let comment of arrayComments">
+      <li class="table-row">
+        <div class="col col-1" data-label="Job Id">{{comment.date}}</div>
+        <div class="col col-2" data-label="Customer Name">{{comment.nomAnime}}</div>
+        <div class="col col-3" data-label="Amount">{{comment.nomUser}}</div>
+        <div class="col col-4" data-label="Payment Status">{{comment.contenu}}</div>
+        <div class="col col-5" data-label="Payment Status"><img src="../../../assets/img/SVG/delete.svg" width="30" height="30"></div>
+      </li>
+    </div>
+    </ul>
+  </div>
+
+</div>
