@@ -38,4 +38,55 @@ export class UserService {
       return this.responseS.ErrorF(error);
     }
   }
+
+  async getNbUser() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/users/user');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getNbAdmin() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/users/admin');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getAllUser() {
+    const get$ = this.http.get(environment.backUrl + 'users/all');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async patchUpgrade(idUser: number) {
+    try {
+      const $post = this.http.patch(environment.backUrl + 'users/'+idUser+'/role/admin', {})
+      const res = await firstValueFrom($post);
+      this.responseS.SuccessF(res);
+      return true;
+    } catch (error) {
+      return this.responseS.ErrorF(error);
+    }
+  }
+
+  async patchDown(idUser: number) {
+    try {
+      const $post = this.http.patch(environment.backUrl + 'users/'+idUser+'/role/user', {})
+      const res = await firstValueFrom($post);
+      this.responseS.SuccessF(res);
+      return true;
+    } catch (error) {
+      return this.responseS.ErrorF(error);
+    }
+  }
+
+  async delete(idUser: number) {
+    try {
+      const $delete = this.http.delete(environment.backUrl + 'users/'+idUser)
+      const res = await firstValueFrom($delete);
+      this.responseS.SuccessF(res);
+      return true;
+    } catch (error) {
+      return this.responseS.ErrorF(error);
+    }
+  }
 }
