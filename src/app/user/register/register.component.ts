@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { SecretQuestionService } from 'src/app/services/secretQuestion.service';
 
 export function ConfirmedValidator(
   controlName: string,
@@ -38,9 +39,11 @@ export function ConfirmedValidator(
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
+  arrayQuestions = [];
   public message = '';
   constructor(
     private authS: AuthService,
+    private secretQuestion: SecretQuestionService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {
@@ -50,6 +53,8 @@ export class RegisterComponent implements OnInit {
         password: ['', [Validators.required, Validators.minLength(5)]],
         confirmPassword: ['', [Validators.required, Validators.minLength(5)]],
         username: ['', [Validators.required]],
+        secretQuestion: ['', [Validators.required]],
+        answerSecretQuestion: ['', [Validators.required]],
       },
       {
         validator: ConfirmedValidator('password', 'confirmPassword'),
@@ -57,7 +62,13 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  async ngOnInit() {
+    const allQuestions = this.secretQuestion.getQuestion();
+
+    allQuestions.then((question) => {
+      this.arrayQuestions = question.body;
+    });
+  }
 
   get f() {
     return this.registerForm.controls;

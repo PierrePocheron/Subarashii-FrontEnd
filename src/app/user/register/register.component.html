@@ -10,13 +10,15 @@
           <a class="d-flex flex-column align-items-center">
             <img src="../../../assets/img/SVG/profile.svg" width="50" height="50" alt="">
           </a>
-          <h1 class="text-center text-uppercase color-main font-architects-daughter mt-2">Bienvenue !</h1>
+          <h1 class="text-center text-uppercase color-main font-architects-daughter mt-2">
+            Bienvenue !
+          </h1>
         </div>
         <form class="mx-sm-5 mt-sm-5 px-sm-4" (ngSubmit)="register()" [formGroup]="registerForm">
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp"
-              required>
+              required />
 
             <div *ngIf="submitted && f['email'].errors">
               <small *ngIf="f['email'].errors?.['required']">Email requis</small>
@@ -26,7 +28,7 @@
           <div class="form-group">
             <label for="username">Nom d'utilisateur</label>
             <input type="username" formControlName="username" class="form-control" id="username"
-              aria-describedby="username" required>
+              aria-describedby="username" required />
 
             <div *ngIf="submitted && f['username'].errors">
               <small *ngIf="f['username'].errors?.['required']">Nom d'utilisateur requis</small>
@@ -34,25 +36,45 @@
           </div>
           <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" formControlName="password" class="form-control" id="password" required>
+            <input type="password" formControlName="password" class="form-control" id="password" required />
 
             <div *ngIf="submitted && f['password'].errors">
               <small *ngIf="f['password'].errors?.['required']">Le mot de passe est obligatoire</small>
               <small *ngIf="f['password'].errors?.['minlength']">Le mot doit faire plus de
-                {{f['password'].errors?.['minlength'].requiredLength}} lettres</small>
+                {{f['password'].errors?.['minlength'].requiredLength}}
+                lettres</small>
             </div>
           </div>
 
           <div class="form-group">
             <label for="confirmPassword">Confirmer mot de passe</label>
-            <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword" required>
+            <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
+              required />
 
             <div *ngIf="submitted && f['confirmPassword'].errors">
               <small *ngIf="f['confirmPassword'].errors?.['required']">Le mot de passe est obligatoire</small>
               <small *ngIf="f['confirmPassword'].errors?.['minlength']">Le mot doit faire plus de
-                {{f['confirmPassword'].errors?.['minlength'].requiredLength}} lettres</small>
-              <small *ngIf="f['confirmPassword'].errors?.['confirmedValidator']">Les mots de passes doivent être
-                les mêmes</small>
+                {{f['confirmPassword'].errors?.['minlength'].requiredLength}}
+                lettres</small>
+              <small *ngIf="f['confirmPassword'].errors?.['confirmedValidator']">Les mots de passes doivent être les
+                mêmes</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="secretQuestion">Question secrete</label>
+
+            <select  type="select" formControlName="secretQuestion" class="form-control" id="secretQuestion" required >
+              <option *ngFor="let q of arrayQuestions" value="{{ q['idSecretQuestion'] }}">{{ q['question'] }}</option>                
+            </select>
+            <div *ngIf="submitted && f['secretQuestion'].errors">
+              <small *ngIf="f['secretQuestion'].errors?.['required']">Veuillez sélectionner une question secrète</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="answerSecretQuestion">Réponse secrete</label>
+            <input type="text" formControlName="answerSecretQuestion" class="form-control" id="answerSecretQuestion" required/>
+            <div *ngIf="submitted && f['answerSecretQuestion'].errors">
+              <small *ngIf="f['answerSecretQuestion'].errors?.['required']">Veuillez renseigner une réponse secrète</small>
             </div>
           </div>
           <div class="btn-div text-center mt-sm-5">
