@@ -57,6 +57,10 @@ li {
   flex-basis: 3%;
 }
 
+.col-6 {
+  flex-basis: 3%;
+}
+
 button {
   background-color: white;
   border: 1px solid white;

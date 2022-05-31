@@ -22,7 +22,7 @@ export class UtilisateursComponent implements OnInit {
     })
   }
 
- async upgrade(idUser: number) {
+  async upgrade(idUser: number) {
     await this.userService.patchUpgrade(idUser);
     location.reload()
   }
@@ -32,4 +32,8 @@ export class UtilisateursComponent implements OnInit {
     location.reload();
   }
 
+  async delete(idUser: number) {
+    await this.userService.delete(idUser);
+    location.reload();
+  }
 }
