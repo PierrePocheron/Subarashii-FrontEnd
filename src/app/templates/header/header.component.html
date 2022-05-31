@@ -24,10 +24,18 @@
           <a class="item-nav mx-2" [routerLink]="['/animes-list']">Mes Animés</a>
         </li>
         <hr class="bg-main my-2">
-        <li *ngIf="role === 'USER'" class="d-flex align-items-center mb-1">
+        <li *ngIf="role === 'USER'" class="flex-column align-items-center mb-1">
           <img src="../../../assets/img/SVG/admin.svg" width="20" alt="">
-          <a class="item-nav mx-2" [routerLink]="['/admin']">Dashboard admin </a>
+          <a class="item-nav mx-2" [routerLink]="['/admin']">Administrateur </a>
+          <ul class="navbar-nav me-auto my-2 mb-lg-0 flex-column">
+            <li class="d-flex align-items-center mx-5"> <a class="item-nav mx-2"
+                [routerLink]="['/animes-list']">Utilisateurs</a></li>
+            <li class="d-flex align-items-center mx-5"> <a class="item-nav mx-2"
+                [routerLink]="['/animes-list']">Commentaires</a></li>
+
+          </ul>
         </li>
+
         <hr class="bg-main my-2">
         <li class="d-flex align-items-center mb-1" (click)="logout()">
           <img src="../../../assets/img/SVG/logout.svg" width="20" alt="">
@@ -51,7 +59,7 @@
         <a class="me-5" routerLink="/"><img src="../../../assets/img/logo-simple.png" class="logo" alt=""></a>
         <a class="item-nav pe-2" routerLink="/">Découvrir</a>
         <a class="item-nav" [routerLink]="['/animes-list']">Mes Animés</a>
-        <a *ngIf="role === 'USER'" class="item-nav" [routerLink]="['/admin']">Dashboard admin</a>
+        <a *ngIf="role === 'USER'" class="item-nav" [routerLink]="['/admin']">Administrateur</a>
       </div>
 
       <div class="col-6 d-flex justify-content-end align-items-center">
@@ -69,6 +77,17 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" [routerLink]="['/compte']">Mon compte</a></li>
             <li><a class="dropdown-item" (click)="logout()">Déconnexion</a></li>
+          </ul>
+        </div>
+
+        <div *ngIf="role === 'USER'" class="dropdown search">
+          <a class="hover-zoom d-flex flex-column align-items-center" title="Search" id="dropdownMenuButton2"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../../../assets/img/SVG/search-admin.svg" width="50" height="50" alt="">
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" [routerLink]="['/user']">Utilisateurs</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/commentaires']">Commentaires</a></li>
           </ul>
         </div>
 
