@@ -37,4 +37,22 @@ export class AnimeService {
     const data: any = await firstValueFrom(get$);
     return data.body;
   }
+
+  async getAnimes() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/animes');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getCategories() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/genres');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getEpisodes(){
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/episodes');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
 }

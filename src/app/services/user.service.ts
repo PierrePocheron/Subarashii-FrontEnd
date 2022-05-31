@@ -38,4 +38,16 @@ export class UserService {
       return this.responseS.ErrorF(error);
     }
   }
+
+  async getNbUser() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/users/user');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getNbAdmin() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/users/admin');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
 }

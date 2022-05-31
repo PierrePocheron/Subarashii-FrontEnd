@@ -34,4 +34,11 @@ export class CommentService {
       return this.responseS.ErrorF(error);
     }
   }
+
+  async getComments() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/comments');
+    const data: any = await firstValueFrom(get$);
+    console.log(data)
+    return data;
+  }
 }

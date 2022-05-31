@@ -1,16 +1,27 @@
 <div class="bg-img d-flex align-items-center flex-column admin">
   <div class="admin-wrapper">
-    <div class="admin-card " >
+    <div class="admin-card ">
       <canvas id="myChart" width="80%" height="80%"></canvas>
     </div>
     <div class="admin-card admin-card-number">
       <img src="../../assets/img/SVG/animes-movie.svg" alt="" width="100" height="100">
-      <div class="admin-number"> 100 </div>
-      <div> animés </div>
+      <div class="admin-card-wrapper">
+        <div>
+        <div class="admin-number"> {{nbAnimes}} </div>
+        <div> animés </div>
+      </div>
+      <div>
+        <div class="admin-number"> {{nbCategories}} </div>
+        <div> catégories </div>
+      </div>   <div>
+        <div class="admin-number"> {{nbEpisodes}} </div>
+        <div> épisodes </div>
+      </div>
+      </div>
     </div>
     <div class="admin-card  admin-card-number">
-    <img src="../../assets/img/SVG/comments.svg" alt="" width="100" height="100">
-      <div class="admin-number"> 1000</div>
+      <img src="../../assets/img/SVG/comments.svg" alt="" width="100" height="100">
+      <div class="admin-number"> {{nbComments}}</div>
       <div> commentaires </div>
     </div>
   </div>

@@ -1,0 +1,24 @@
+<div class="bg-img d-flex align-items-center flex-column utilisateurs">
+  <h2> Liste des commentaires </h2>
+  <div class="container">
+    <ul>
+      <li class="table-header">
+        <div class="col col-1">Date</div>
+        <div class="col col-2">Animé</div>
+        <div class="col col-3">Utilisateur</div>
+        <div class="col col-4">Commentaire</div>
+        <div class="col col-5"></div>
+      </li>
+      <div *ngFor="let user of arrayUsers">
+      <li class="table-row">
+        <div class="col col-1" data-label="Job Id"></div>
+        <div class="col col-2" data-label="Customer Name"></div>
+        <div class="col col-3" data-label="Amount"></div>
+        <div class="col col-4" data-label="Payment Status"></div>
+        <div class="col col-5" data-label="Payment Status"><img src="../../../assets/img/SVG/delete.svg" width="30" height="30"></div>
+      </li>
+    </div>
+    </ul>
+  </div>
+
+</div>
