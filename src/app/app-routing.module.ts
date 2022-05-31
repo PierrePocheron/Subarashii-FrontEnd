@@ -7,6 +7,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { AnimeComponent } from './anime/anime.component';
 import { AnimesListComponent } from './user/animes-list/animes-list.component';
 import { CompteComponent } from './user/compte/compte.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'anime/:id', component: AnimeComponent, canActivate: [AuthGuard] },
   { path: 'animes-list', component: AnimesListComponent, canActivate: [AuthGuard] },
   { path : 'compte', component: CompteComponent, canActivate: [AuthGuard]},
+  { path : 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' },
 ];
 

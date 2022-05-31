@@ -24,6 +24,11 @@
           <a class="item-nav mx-2" [routerLink]="['/animes-list']">Mes Animés</a>
         </li>
         <hr class="bg-main my-2">
+        <li *ngIf="role === 'USER'" class="d-flex align-items-center mb-1">
+          <img src="../../../assets/img/SVG/admin.svg" width="20" alt="">
+          <a class="item-nav mx-2" [routerLink]="['/admin']">Dashboard admin </a>
+        </li>
+        <hr class="bg-main my-2">
         <li class="d-flex align-items-center mb-1" (click)="logout()">
           <img src="../../../assets/img/SVG/logout.svg" width="20" alt="">
           <a class="item-nav mx-2">Déconnexion</a>
@@ -46,6 +51,7 @@
         <a class="me-5" routerLink="/"><img src="../../../assets/img/logo-simple.png" class="logo" alt=""></a>
         <a class="item-nav pe-2" routerLink="/">Découvrir</a>
         <a class="item-nav" [routerLink]="['/animes-list']">Mes Animés</a>
+        <a *ngIf="role === 'USER'" class="item-nav" [routerLink]="['/admin']">Dashboard admin</a>
       </div>
 
       <div class="col-6 d-flex justify-content-end align-items-center">
