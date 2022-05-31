@@ -67,19 +67,8 @@ export class RegisterComponent implements OnInit {
 
     allQuestions.then((question) => {
       this.arrayQuestions = question.body;
-      for (let i= 0; i<this.arrayQuestions.length; i++) {
-        this.arrayQuestions[i] = this.arrayQuestions[i];
-      }
     });
   }
-
-  // const comments = this.animesCommentsService.getComments();
-  //   comments.then((comment) => {
-  //     this.arrayComments = comment.body;
-  //     for (let i = 0; i < this.arrayComments.length; i++) {
-  //       this.arrayComments[i].date = this.arrayComments[i].date.substring(0, this.arrayComments[i].date.length - 9);
-  //     }
-  //   })
 
   get f() {
     return this.registerForm.controls;

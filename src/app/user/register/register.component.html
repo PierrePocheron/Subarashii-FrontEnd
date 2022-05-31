@@ -68,14 +68,14 @@
             </select>
             <div *ngIf="submitted && f['secretQuestion'].errors">
               <small *ngIf="f['secretQuestion'].errors?.['required']">Veuillez sélectionner une question secrète</small>
-              <small *ngIf="f['secretQuestion'].errors?.['minlength']">La question secrète doit faire plus de
-                {{f['secretQuestion'].errors?.['minlength'].requiredLength}}
-                lettres</small>
             </div>
           </div>
           <div class="form-group">
             <label for="answerSecretQuestion">Réponse secrete</label>
             <input type="text" formControlName="answerSecretQuestion" class="form-control" id="answerSecretQuestion" required/>
+            <div *ngIf="submitted && f['answerSecretQuestion'].errors">
+              <small *ngIf="f['answerSecretQuestion'].errors?.['required']">Veuillez renseigner une réponse secrète</small>
+            </div>
           </div>
           <div class="btn-div text-center mt-sm-5">
             <button type="submit" class="btn btn-main">S'inscrire</button>
