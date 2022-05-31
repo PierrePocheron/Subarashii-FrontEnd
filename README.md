@@ -30,3 +30,4 @@ Le changelog complet est disponible [ici](https://github.com/PierrePocheron/Suba
 **Developpeur Front**
 - Sam MONTAUDON
 - Julie MILER
+- Léo ROUILLARD
