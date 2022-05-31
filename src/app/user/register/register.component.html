@@ -62,10 +62,9 @@
           </div>
           <div class="form-group">
             <label for="secretQuestion">Question secrete</label>
-            <select type="select" formControlName="secretQuestion" class="form-control" id="secretQuestion" required >
-              <option value="1">Quelle est la couleur de votre chat</option>
-              <option value="2">Quelle est la couleur de votre mère</option>
-              <option value="3">Quelle est la couleur de votre voiture</option>
+
+            <select  type="select" formControlName="secretQuestion" class="form-control" id="secretQuestion" required >
+              <option *ngFor="let q of arrayQuestions" value="{{ q['idSecretQuestion'] }}">{{ q['question'] }}</option>                
             </select>
             <div *ngIf="submitted && f['secretQuestion'].errors">
               <small *ngIf="f['secretQuestion'].errors?.['required']">Veuillez sélectionner une question secrète</small>
@@ -75,14 +74,8 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="secretAnswer">Réponse secrete</label>
-            <input type="text" formControlName="secretAnswer" class="form-control" id="secretAnswer" required/>
-            <div *ngIf="submitted && f['secretAnswer'].errors">
-              <small *ngIf="f['secretAnswer'].errors?.['required']">Veuillez renseigner une réponse secrète</small>
-              <small *ngIf="f['secretAnswer'].errors?.['minlength']">La réponse secrète doit faire plus de
-                {{f['secretAnswer'].errors?.['minlength'].requiredLength}}
-                lettres</small>
-            </div>
+            <label for="answerSecretQuestion">Réponse secrete</label>
+            <input type="text" formControlName="answerSecretQuestion" class="form-control" id="answerSecretQuestion" required/>
           </div>
           <div class="btn-div text-center mt-sm-5">
             <button type="submit" class="btn btn-main">S'inscrire</button>

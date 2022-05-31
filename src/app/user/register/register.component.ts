@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { SecretQuestionService } from 'src/app/services/secretQuestion.service';
 
 export function ConfirmedValidator(
   controlName: string,
@@ -38,9 +39,11 @@ export function ConfirmedValidator(
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
+  arrayQuestions = [];
   public message = '';
   constructor(
     private authS: AuthService,
+    private secretQuestion: SecretQuestionService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {
@@ -51,7 +54,7 @@ export class RegisterComponent implements OnInit {
         confirmPassword: ['', [Validators.required, Validators.minLength(5)]],
         username: ['', [Validators.required]],
         secretQuestion: ['', [Validators.required]],
-        secretAnswer: ['', [Validators.required]],
+        answerSecretQuestion: ['', [Validators.required]],
       },
       {
         validator: ConfirmedValidator('password', 'confirmPassword'),
@@ -59,7 +62,24 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  async ngOnInit() {
+    const allQuestions = this.secretQuestion.getQuestion();
+
+    allQuestions.then((question) => {
+      this.arrayQuestions = question.body;
+      for (let i= 0; i<this.arrayQuestions.length; i++) {
+        this.arrayQuestions[i] = this.arrayQuestions[i];
+      }
+    });
+  }
+
+  // const comments = this.animesCommentsService.getComments();
+  //   comments.then((comment) => {
+  //     this.arrayComments = comment.body;
+  //     for (let i = 0; i < this.arrayComments.length; i++) {
+  //       this.arrayComments[i].date = this.arrayComments[i].date.substring(0, this.arrayComments[i].date.length - 9);
+  //     }
+  //   })
 
   get f() {
     return this.registerForm.controls;
