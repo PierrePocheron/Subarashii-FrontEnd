@@ -14,9 +14,9 @@
         <div class="col col-1" data-label="Email">{{user.email}}</div>
         <div class="col col-2" data-label="Username">{{user.username}}</div>
         <div class="col col-3" data-label="Role">{{user.role}}</div>
-        <button (click)="delete(user.idUser)" class="col col-4" data-label="Delete"><img src="../../../assets/img/SVG/delete.svg" width="30" height="30"></button>
-        <button (click)="upgrade(user.idUser)" *ngIf="user.role === 'USER'" class="col col-5" data-label="Upgrade"><img src="../../../assets/img/SVG/up.svg" width="30" height="30"></button>
-        <button (click)="down(user.idUser)" *ngIf="user.role === 'ADMIN'" class="col col-5" data-label="down"><img src="../../../assets/img/SVG/down.svg" width="30" height="30"></button>
+        <button (click)="delete(user.idUser)" class="col col-4" data-label="Delete"><img src="../../../assets/img/SVG/delete.svg" width="30" height="30" alt=""></button>
+        <button (click)="upgrade(user.idUser)" *ngIf="user.role === 'USER'" class="col col-5" data-label="Upgrade"><img src="../../../assets/img/SVG/up.svg" width="30" height="30" alt=""></button>
+        <button (click)="down(user.idUser)" *ngIf="user.role === 'ADMIN'" class="col col-5" data-label="down"><img src="../../../assets/img/SVG/down.svg" width="30" height="30" alt=""></button>
       </li>
     </div>
     </ul>
