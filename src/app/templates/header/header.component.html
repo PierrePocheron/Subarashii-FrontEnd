@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg d-block d-lg-none d-xl-none navbar-light">
   <div class="container">
-    <a class="navbar-brand"><img src="../../../assets/img/logo-simple.png" class="logo"></a>
+    <a class="navbar-brand"><img src="../../../assets/img/logo-simple.png" class="logo" alt=""></a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
       aria-label="Toggle navigation">
@@ -10,23 +10,28 @@
       <ul class="navbar-nav me-auto my-2 mb-lg-0">
         <hr class="bg-main my-2">
         <li class="d-flex align-items-center mb-1">
-          <img src="../../../assets/img/SVG/eye.svg" width="20">
+          <img src="../../../assets/img/SVG/compte.svg" width="20" alt="">
+          <a class="item-nav mx-2" [routerLink]="['/compte']">Mon Compte</a>
+        </li>
+        <hr class="bg-main my-2">
+        <li class="d-flex align-items-center mb-1">
+          <img src="../../../assets/img/SVG/eye.svg" width="20" alt="">
           <a class="item-nav mx-2" routerLink="/">Découvrir</a>
         </li>
         <hr class="bg-main my-2">
         <li class="d-flex align-items-center mb-1">
-          <img src="../../../assets/img/SVG/heart.svg" width="20">
+          <img src="../../../assets/img/SVG/heart.svg" width="20" alt="">
           <a class="item-nav mx-2" [routerLink]="['/animes-list']">Mes Animés</a>
         </li>
         <hr class="bg-main my-2">
         <li class="d-flex align-items-center mb-1" (click)="logout()">
-          <img src="../../../assets/img/SVG/logout.svg" width="20">
+          <img src="../../../assets/img/SVG/logout.svg" width="20" alt="">
           <a class="item-nav mx-2">Déconnexion</a>
         </li>
         <hr class="bg-main my-2">
       </ul>
       <div class="search-input d-flex position-relative w-100">
-        <img src="../../../assets/img/SVG/search.svg">
+        <img src="../../../assets/img/SVG/search.svg" alt="">
         <input type="text" class="form-control form-input m-0" (keyup.enter)="onEnter()" id="search"
           [(ngModel)]="search">
       </div>
@@ -38,14 +43,14 @@
   <div class="container">
     <div class="row w-100">
       <div class="col-6 d-flex align-items-center">
-        <a class="me-5" routerLink="/"><img src="../../../assets/img/logo-simple.png" class="logo"></a>
+        <a class="me-5" routerLink="/"><img src="../../../assets/img/logo-simple.png" class="logo" alt=""></a>
         <a class="item-nav pe-2" routerLink="/">Découvrir</a>
         <a class="item-nav" [routerLink]="['/animes-list']">Mes Animés</a>
       </div>
 
       <div class="col-6 d-flex justify-content-end align-items-center">
         <div class="search-input d-flex position-relative me-5">
-          <img src="../../../assets/img/SVG/search.svg">
+          <img src="../../../assets/img/SVG/search.svg" alt="">
           <input type="text" class="form-control form-input m-0" (keyup.enter)="onEnter()" id="search"
             [(ngModel)]="search">
         </div>
@@ -53,9 +58,10 @@
         <div class="dropdown">
           <a class="hover-zoom d-flex flex-column align-items-center" title="Mon Compte" id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../../../assets/img/SVG/profile.svg" width="40" height="40">
+            <img src="../../../assets/img/SVG/profile.svg" width="40" height="40" alt="">
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" [routerLink]="['/compte']">Mon compte</a></li>
             <li><a class="dropdown-item" (click)="logout()">Déconnexion</a></li>
           </ul>
         </div>
