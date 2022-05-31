@@ -57,3 +57,10 @@ li {
 .col-5 {
   flex-basis: 5%;
 }
+
+
+button {
+  background-color: white;
+  border: 1px solid white;
+  color: #eee;
+}

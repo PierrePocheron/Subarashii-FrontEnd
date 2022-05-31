@@ -23,4 +23,9 @@ export class CommentairesComponent implements OnInit {
       }
     })
   }
+
+  async delete(idComment: number) {
+   await this.animesCommentsService.delete(idComment);
+    location.reload()
+  }
 }
