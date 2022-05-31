@@ -37,7 +37,7 @@
 
 .admin-number {
   font-size: 70px;
-  font-family: 'Pacifico', 'Arial'
+  font-family: Pacifico, Arial, sans-serif
 }
 
 @media (max-width: 900px) {
