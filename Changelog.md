@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0]() - 01.06.2022
+## [1.0.0](https://github.com/PierrePocheron/Subarashii-FrontEnd/releases/tag/1.0.0) - 01.06.2022
 All notable changes to this project will be documented in this file.
 
 
