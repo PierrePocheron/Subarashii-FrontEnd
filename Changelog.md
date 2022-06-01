@@ -1,25 +1,16 @@
 # Changelog
 
-## [0.0.2] - 31.05.2022
-### Added
-- Secret question & secret answer lors de l'inscription
-- Pour les administrateurs : Page des utilisateurs avec la possibilité de modifier leurs rôles ou de les supprimer
-- Pour les administrateurs : Page des commentaires avec la possibilité de les supprimer
-- Pour les administrateurs : Dashboard administrateur avec des graphiques sur le nombre d'utilisateurs et d'administrateurs, le nombre d'animés, de commentaires, d'épisodes et de catégories.
+## [1.0.0]() - 01.06.2022
+All notable changes to this project will be documented in this file.
 
-### Changed
-- Changelog
 
-### Fixed
-- Bug sonarQube
+### Feature
+- **Page profil** : display & update user's data [#4](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/4)
+- **Secret Question Account** : user can choose & answer a secret question [#7](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/7)
+- **Dashboard Admin** : display metrics & manage user and comments [#2](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/2)
 
-## [0.0.1] - 30-05-2022
-### Added 
-- Page profil, possibilité de modifier son username et/ou son password
-- Changelog
-
-### Changed
-- Readme
+### Changed 
+- ***Readme***: add description, initialisation & changelog [#8](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/8)
 
 ### Fixed
-- Bugs sonarQube
+- ***Code Quality***: Remove code smells & bugs [#5](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/5)
