@@ -1,5 +1,5 @@
-import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { SecretQuestionService } from 'src/app/services/secretQuestion.service';
 
 @Component({
@@ -43,9 +43,9 @@ export class QuestionsComponent implements OnInit {
 
   update(idQuestion: number) {
     this.openFormChange[idQuestion] = true;
-    for (let i = 0; i < this.arrayQuestions.length; i++) {
-      if (this.arrayQuestions[i].idSecretQuestion === idQuestion) {
-        this.questionChange.setValue(this.arrayQuestions[i].question);
+    for (let question of this.arrayQuestions) {
+      if (question.idSecretQuestion === idQuestion) {
+        this.questionChange.setValue(question.question);
       }
     }
   }
