@@ -13,6 +13,7 @@ export class UserStatisticsComponent implements OnInit {
   enCours: number;
   termines: number;
   enAttente: number;
+  comments: number;
 
   constructor(private userService: UserService) {
     this.favoris = 0;
@@ -20,6 +21,7 @@ export class UserStatisticsComponent implements OnInit {
     this.enCours = 0;
     this.termines = 0;
     this.enAttente = 0;
+    this.comments = 0;
   }
 
   async ngOnInit() {
@@ -33,6 +35,8 @@ export class UserStatisticsComponent implements OnInit {
     this.termines = termines.body;
     const enAttente = await this.userService.getNbEnAttente();
     this.enAttente = enAttente.body;
+    const comments = await this.userService.getNbComments();
+    this.comments = comments.body;
     const ctx = document.getElementById('myChart') as ChartItem;
     const myChart = new Chart(ctx, {
       type: 'doughnut',
@@ -41,9 +45,9 @@ export class UserStatisticsComponent implements OnInit {
         datasets: [{
           data: [this.aVoir, this.enCours, this.termines, this.enAttente],
           backgroundColor: [
-            'rgb(255,71,63)',
-            'rgb(194,0,27)',
-            'blue', 'green'
+            '#f0e36b',
+            '#00b8c0',
+            '#ff473f', '#7f00ff'
           ],
         }]
       },
