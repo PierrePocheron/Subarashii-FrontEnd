@@ -45,7 +45,7 @@ export function tokenGetter() {
     AdminDashboardComponent,
     CommentairesComponent,
     UtilisateursComponent,
-    QuestionsComponent
+    QuestionsComponent,
     UserStatisticsComponent,
   ],
   imports: [
