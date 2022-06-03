@@ -12,7 +12,7 @@ export class SecretQuestionService {
 
   async getQuestion() {
       const dataP = this.http.get(
-        environment.backUrl + 'secretquestions'
+        environment.backUrl + 'secretquestions/all'
       );
       const value: any = await firstValueFrom(dataP);
       return value;
