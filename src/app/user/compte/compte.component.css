@@ -41,3 +41,8 @@ input {
   display: flex;
   flex-direction: row;
 }
+
+.compte-user-statistics {
+  width: 100%;
+  margin-top: 40px;
+}

@@ -89,4 +89,35 @@ export class UserService {
       return this.responseS.ErrorF(error);
     }
   }
+
+  async getNbFavoris() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/users/admin');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getNbAVoir() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/users/admin');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getNbEnCours() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/users/admin');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getNbTermines() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/users/admin');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getNbEnAttente() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/count/users/admin');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
 }
