@@ -10,6 +10,7 @@ import { CompteComponent } from './user/compte/compte.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CommentairesComponent } from './admin-dashboard/commentaires/commentaires.component';
 import { UtilisateursComponent } from './admin-dashboard/utilisateurs/utilisateurs.component';
+import { QuestionsComponent } from './admin-dashboard/questions/questions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path : 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard]},
   { path : 'commentaires', component: CommentairesComponent, canActivate: [AuthGuard]},
   { path : 'utilisateurs', component: UtilisateursComponent, canActivate: [AuthGuard]},
+  { path : 'questions', component: QuestionsComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' },
 ];
 
