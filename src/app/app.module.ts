@@ -23,6 +23,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { CommentairesComponent } from './admin-dashboard/commentaires/commentaires.component';
 import { UtilisateursComponent } from './admin-dashboard/utilisateurs/utilisateurs.component';
 import { QuestionsComponent } from './admin-dashboard/questions/questions.component';
+import { UserStatisticsComponent } from './user/compte/user-statistics/user-statistics.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token') ? localStorage.getItem('token') : '';
@@ -44,7 +45,8 @@ export function tokenGetter() {
     AdminDashboardComponent,
     CommentairesComponent,
     UtilisateursComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    UserStatisticsComponent,
   ],
   imports: [
     BrowserModule,
