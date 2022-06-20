@@ -1,20 +1,20 @@
 import { HttpClientModule } from "@angular/common/http";
 import { TestBed } from "@angular/core/testing"
 import { RouterTestingModule } from "@angular/router/testing";
-import { QuestionsComponent } from "./questions.component";
+import { CommentairesComponent } from "./commentaires.component";
 
-describe('QuestionsComponent', () => {
+describe('CommentairesComponent', () => {
   let app: any = null;
   let fixture: any = null;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule],
-      declarations: [QuestionsComponent]
+      declarations: [CommentairesComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuestionsComponent);
+    fixture = TestBed.createComponent(CommentairesComponent);
     app = fixture.componentInstance;
   });
 
@@ -24,7 +24,7 @@ describe('QuestionsComponent', () => {
 
   it('should be call delete if button click', () => {
     spyOn(app, 'delete');
-    app.arrayQuestions = [{question: 'questtion ?', idSecretQuestion:1}]
+    app.arrayComments = [{date: '12/05', nomAnime: 'nomAnime', nomUser: 'nomUser', contenu: 'descirption', id:1}]
 
     fixture.detectChanges();
 
