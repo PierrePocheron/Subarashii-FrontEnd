@@ -1,4 +1,4 @@
-# Subarashii
+# Subarashii-FrontEnd
 
 [![GitHub Pages](https://github.com/PierrePocheron/Subarashii-FrontEnd/workflows/GitHub%20Pages/badge.svg)](#)
 [![GitHub Super-Linter](https://github.com/PierrePocheron/Subarashii-FrontEnd/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
