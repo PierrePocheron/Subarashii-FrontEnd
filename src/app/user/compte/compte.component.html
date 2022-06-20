@@ -13,7 +13,7 @@
             <div *ngIf="!isOpenInputName"> : {{username}} </div>
             <div *ngIf="isOpenInputName" class="compte-wrapper">
               <input type="text" class="form-control" id="username" formControlName="username">
-              <button class="btn btn-main" (click)="submitUsername()">Enregistrer</button>
+              <button id="buttonUsername" class="btn btn-main" (click)="submitUsername()">Enregistrer</button>
             </div>
           </div>
           <div *ngIf="isErrorUsername" class="compte-error">
@@ -26,7 +26,7 @@
             <span class="compte-label"> Password</span>
             <div *ngIf="isOpenInputPassword" class="compte-wrapper">
               <input type="password" class="form-control" id="password" formControlName="password">
-              <button class="btn btn-main" (click)="submitPassword()">Enregistrer</button>
+              <button id="buttonPassword" class="btn btn-main" (click)="submitPassword()">Enregistrer</button>
             </div>
           </div>
           <div *ngIf="isErrorPassword" class="compte-error">
