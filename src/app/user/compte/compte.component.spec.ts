@@ -71,7 +71,7 @@ describe('CompteComponent', () => {
   it('should be isErrorPasword = true is password.length < 5', () => {
     app.isOpenInputPassword = true;
     app.isErrorPassword = false;
-    app.updateForm.setValue({username: '', password: 'test'});
+    app.updateForm.setValue({username: '', password: 't'});
     fixture.detectChanges();
     const button = fixture.debugElement.nativeElement.querySelector('#buttonPassword');
     button.click();
@@ -82,7 +82,7 @@ describe('CompteComponent', () => {
   it('should be isErrorPasword = false is password.length >= 5', () => {
     app.isOpenInputPassword = true;
     app.isErrorPassword = false;
-    app.updateForm.setValue({username: '', password: 'test12'});
+    app.updateForm.setValue({username: '', password: 'fz@ms5foe'});
     fixture.detectChanges();
     const button = fixture.debugElement.nativeElement.querySelector('#buttonPassword');
     button.click();
