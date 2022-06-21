@@ -11,6 +11,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { CommentairesComponent } from './admin-dashboard/commentaires/commentaires.component';
 import { UtilisateursComponent } from './admin-dashboard/utilisateurs/utilisateurs.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+import { QuestionsComponent } from './admin-dashboard/questions/questions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path : 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard]},
   { path : 'commentaires', component: CommentairesComponent, canActivate: [AuthGuard]},
   { path : 'utilisateurs', component: UtilisateursComponent, canActivate: [AuthGuard]},
+  { path : 'questions', component: QuestionsComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' },
 ];
 

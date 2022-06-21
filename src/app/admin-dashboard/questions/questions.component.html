@@ -1,0 +1,33 @@
+<div class="bg-img d-flex align-items-center flex-column question">
+  <h2> Liste des SecretQuestions </h2>
+  <button *ngIf="!openForm" (click)="clickOpenForm()" class="col col-5 button-add" data-label="Add">Add Question<img
+      class="image-add" src="../../../assets/img/SVG/add.svg" width="20" height="20" alt=""></button>
+  <div *ngIf="openForm" class="question-form">
+    <input type="text" class="form-control" id="question" [formControl]="question">
+    <button class="btn btn-main" (click)="submitQuestion()">Enregistrer</button>
+  </div>
+  <div class="container">
+    <ul>
+      <li class="table-header">
+        <div class="col col-1">Question</div>
+        <div class="col col-2"></div>
+        <div class="col col-3"></div>
+      </li>
+      <div *ngFor="let question of arrayQuestions">
+        <li class="table-row">
+          <div *ngIf="!openFormChange[question.idSecretQuestion]" class="col col-1" data-label="question">
+            {{question.question}}</div>
+          <input *ngIf="openFormChange[question.idSecretQuestion]" class="col col-1" type="text" id="questionChange"
+            value="question.question" [formControl]="questionChange" />
+          <button *ngIf="openFormChange[question.idSecretQuestion]" class="btn btn-main"
+            (click)="changeQuestion(question.idSecretQuestion)">Enregistrer</button>
+          <button *ngIf="!openFormChange[question.idSecretQuestion]" (click)="update(question.idSecretQuestion)"
+            class="col col-2 button-delete" data-label="Update"><img src="../../../assets/img/SVG/update.svg" width="30" height="30"
+              alt=""></button>
+          <button id="buttonDelete" (click)="delete(question.idSecretQuestion)" class="col col-3 button-delete" data-label="Delete"><img
+              src="../../../assets/img/SVG/delete.svg" width="30" height="30" alt=""></button>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

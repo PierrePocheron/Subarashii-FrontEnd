@@ -96,6 +96,41 @@ export class UserService {
     const data: any = await firstValueFrom(get$);
     console.log(data);
     return data;
+  }
+  
+  async getNbFavoris() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/current/count/anime/favoris');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
 
+  async getNbAVoir() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/current/count/anime/avoir');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getNbEnCours() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/current/count/anime/encours');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getNbTermines() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/current/count/anime/terminee');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getNbEnAttente() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/current/count/anime/attente');
+    const data: any = await firstValueFrom(get$);
+    return data;
+  }
+
+  async getNbComments() {
+    const get$ = this.http.get(environment.backUrl + 'statsmetrics/current/count/comments');
+    const data: any = await firstValueFrom(get$);
+    return data;
   }
 }
