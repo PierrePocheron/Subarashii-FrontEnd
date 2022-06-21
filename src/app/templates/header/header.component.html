@@ -60,7 +60,7 @@
         <a class="me-5" routerLink="/"><img src="../../../assets/img/logo-simple.png" class="logo" alt=""></a>
         <a class="item-nav pe-2" routerLink="/">Découvrir</a>
         <a class="item-nav" [routerLink]="['/animes-list']">Mes Animés</a>
-        <a id="admin" *ngIf="role === 'ADMIN'" class="item-nav" [routerLink]="['/admin']">Administrateur</a>
+        <a *ngIf="role === 'ADMIN'" class="item-nav" [routerLink]="['/admin']">Administrateur</a>
       </div>
 
       <div class="col-6 d-flex justify-content-end align-items-center">
