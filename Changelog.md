@@ -14,3 +14,11 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - ***Code Quality***: Remove code smells & bugs [#5](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/5)
+
+## [2.0.0](https://github.com/PierrePocheron/Subarashii-FrontEnd/releases/tag/2.0.0) - 21.06.2022
+
+### Feature
+- **Unit test** : add unit test [#25](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/25)
+- **Cypress** : add cypress [#28](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/28)
+- **Manage question** : display & update questions [#18](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/18)
+- **User statistic** : display metrics user statistic [#16](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/16)
