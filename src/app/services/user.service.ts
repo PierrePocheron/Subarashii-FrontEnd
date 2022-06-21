@@ -89,4 +89,13 @@ export class UserService {
       return this.responseS.ErrorF(error);
     }
   }
+
+  async getQuestion(idUser: number) {
+   
+    const get$ = this.http.get(environment.backUrl + 'secretquestions/publc/'+idUser);
+    const data: any = await firstValueFrom(get$);
+    console.log(data);
+    return data;
+
+  }
 }

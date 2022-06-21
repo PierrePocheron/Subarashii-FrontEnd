@@ -10,11 +10,13 @@ import { CompteComponent } from './user/compte/compte.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CommentairesComponent } from './admin-dashboard/commentaires/commentaires.component';
 import { UtilisateursComponent } from './admin-dashboard/utilisateurs/utilisateurs.component';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'forgotPassword', component: ForgotPasswordComponent },
   { path: 'anime/:id', component: AnimeComponent, canActivate: [AuthGuard] },
   { path: 'animes-list', component: AnimesListComponent, canActivate: [AuthGuard] },
   { path : 'compte', component: CompteComponent, canActivate: [AuthGuard]},
