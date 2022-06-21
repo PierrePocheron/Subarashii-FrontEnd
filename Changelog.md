@@ -22,3 +22,7 @@ All notable changes to this project will be documented in this file.
 - **Cypress** : add cypress [#28](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/28)
 - **Manage question** : display & update questions [#18](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/18)
 - **User statistic** : display metrics user statistic [#16](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/16)
+
+### Fixed
+- **Readme** : [#23](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/23)
+- **Vulnerability** : [#26](https://github.com/PierrePocheron/Subarashii-FrontEnd/issues/26)
