@@ -24,7 +24,7 @@
           <button *ngIf="!openFormChange[question.idSecretQuestion]" (click)="update(question.idSecretQuestion)"
             class="col col-2 button-delete" data-label="Update"><img src="../../../assets/img/SVG/update.svg" width="30" height="30"
               alt=""></button>
-          <button (click)="delete(question.idSecretQuestion)" class="col col-3 button-delete" data-label="Delete"><img
+          <button id="buttonDelete" (click)="delete(question.idSecretQuestion)" class="col col-3 button-delete" data-label="Delete"><img
               src="../../../assets/img/SVG/delete.svg" width="30" height="30" alt=""></button>
         </li>
       </div>

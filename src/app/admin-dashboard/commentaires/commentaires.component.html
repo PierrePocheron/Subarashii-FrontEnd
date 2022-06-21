@@ -15,7 +15,7 @@
         <div class="col col-2" data-label="NameAnime">{{comment.nomAnime}}</div>
         <div class="col col-3" data-label="NameUser">{{comment.nomUser}}</div>
         <div class="col col-4" data-label="Contenu">{{comment.contenu}}</div>
-        <button (click)="delete(comment.id)" class="col col-5" data-label="Delete"><img src="../../../assets/img/SVG/delete.svg" width="30" height="30" alt=""></button>
+        <button id="buttonDelete" (click)="delete(comment.id)" class="col col-5" data-label="Delete"><img src="../../../assets/img/SVG/delete.svg" width="30" height="30" alt=""></button>
       </li>
     </div>
     </ul>

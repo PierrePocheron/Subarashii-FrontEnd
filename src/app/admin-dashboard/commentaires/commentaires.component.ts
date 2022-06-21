@@ -16,6 +16,7 @@ export class CommentairesComponent implements OnInit {
 
   ngOnInit(): void {
     const comments = this.animesCommentsService.getComments();
+    console.log(comments)
     comments.then((comment) => {
       this.arrayComments = comment.body;
       for (let aComment of this.arrayComments) {
